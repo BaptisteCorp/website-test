@@ -1,5 +1,5 @@
 <?php 
-$title = "Domotique";
+$title = "DomotiqueTest";
 require 'header.php'; 
 ?>
 
