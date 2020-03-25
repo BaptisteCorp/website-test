@@ -7,7 +7,7 @@ if ($note <= 12) {
 } else {
     echo'Pas mal';
 }
-
+//coucou les petits potes
 switch ($note){    // Sert a rien mais pour tester
     case 14:
         echo 'Brova';
