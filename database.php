@@ -1,14 +1,12 @@
 <?php
-	define('HOST','serviel.ddns.net');
-	define('DB_NAME','siteweb'); //nom de la BDD
-	define('USER','root'); //utilisateur qui se connecte
-	define('PASS','Ensimtruite.'); //pas de mdp de base
-
-	try{
-		$db = new PDO("mysql:host=" . HOST . ";dbname=" . DB_NAME, USER, PASS); #définition du chemin de la BDD
-		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); #deux types d'erreur
-	} catch (PDOException $e){
-		echo $e; #affichage de l'erreur de connexion
-
-	}
+define('HOST','82.65.15.241'); //j'ai caché le nom
+define('DB_NAME','siteweb'); //nom de la BDD
+define('USER','root'); //utilisateur qui se connecte
+define('PASS','Ensimtruite.'); //le mot de passe que j'utilise pour me connecté à la BDD
+try{
+ $db = new PDO("mysql:host=" . HOST . ";dbname=" . DB_NAME, USER, PASS);
+ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e){
+ echo $e; #affichage de l'erreur de connexion
+}
 ?>
