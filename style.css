@@ -4,7 +4,7 @@ html {
     background-image: linear-gradient(45deg,#CCEEFF,#CCFFCC) ;
 
     /*Police écriture*/
-    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-family: Arial Narrow, sans-serif;
     font-weight: 400;
     color:#3F3F3F;
     
@@ -15,6 +15,11 @@ a:hover
  font-weight: bold;
 }
 
+nav{
+    background-color: white;
+    width:100%;
+    border-radius: 10px;
+}
 #wrapper{
     /*Background*/
     background-color: white;
@@ -30,14 +35,68 @@ a:hover
     padding: 50px;
     text-align: center;
 }
-
+/*
 form,p{
     border-style: solid;
 }
+*/
+input,a{
+    border-radius:7px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #808080;
 
+    height: 40px;
+    width: 30%;
+    margin: 5px;
+    font-size: 30px;
+    font-family: Arial Narrow, sans-serif;
+}
 
-/*
+input[type="submit"],a{
+    color:#808080;
+    margin:15px;
+    background-color: white;
+}
+
+input[type="submit"]:hover,a:hover{
+    color:#7FD3D7;
+    border-color: #7FD3D7;
+    font-weight: initial;
+}
+
+input[type="text"]:focus,input[type="password"]:focus{
+    border-color: #7FD3D7;
+    border-radius: 7px;
+}
+
 input::placeholder{
-    margin-left: 15px;
-}µ/
+    text-align:center;
+    width:auto;
+
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-weight: 400;
+}
+
+#cloud{
+    width:100px;
+}
+
+nav+input{
+    width:10px;
+}
+
+a,#stockage,#dossiers,#fichiers{
+    border-style: solid;
+    margin:10px;
+}
+
+.icone{
+    width:50px;
+}
+
+a{
+    text-decoration: none;
+}
+
 
