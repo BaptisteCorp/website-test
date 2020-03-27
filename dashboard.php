@@ -21,7 +21,18 @@
         </div>
         <p>
             <a href="ajout_fichier.php">Ajouter un fichier</a>
-            <a href="creer_dossier.php">Créer un Dossier</a>
+            <button id="updateDetails">Ajouter un dossier</button>
+            <output aria-live="polite"></output>
         </p>
+        <dialog id="favDialog">
+            <form method="dialog">
+                <input type='text' name='nom_fichier' id="select"/>
+                <menu>
+                <button value="cancel">Annuler</button>
+                <button id="confirmBtn" value="default">Confirmer</button>
+                </menu>
+            </form>
+        </dialog>
+        <script type="text/javascript" src="main.js"></script>
     </body>
 </html>
