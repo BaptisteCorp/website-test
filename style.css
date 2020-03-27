@@ -47,7 +47,7 @@ input,a{
     border-color: #808080;
 
     height: 40px;
-    width: 30%;
+    width: 60%;
     margin: 5px;
     font-size: 30px;
     font-family: Arial Narrow, sans-serif;
@@ -98,5 +98,4 @@ a,#stockage,#dossiers,#fichiers{
 a{
     text-decoration: none;
 }
-
 

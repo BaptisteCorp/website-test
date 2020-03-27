@@ -17,7 +17,6 @@
                     <input type="submit" name="formsend" id="formsend" value="Envoyer"><br/>
 
             </form>
-        </div>
 
     <?php
 
@@ -45,17 +44,17 @@
 
 
                 }else{
-                    echo "les mot de passes ne correspondent pas";
+                    echo "<font style=\"font family: courrier new;\"><strong>Les mot de passes ne correspondent pas</strong></font>";
                 }
 
-
             }else{
-                echo "les champs ne sont pas tous remplies";
+                echo "<font style=\"font family: courrier new;\"><strong>Les champs ne sont pas tous remplies</strong></font>";
             }
         }
 
 
 ?>
+</div>
 
 
 
