@@ -1,5 +1,5 @@
 <?php
-define('HOST','82.65.15.241'); //j'ai caché le nom
+define('HOST','http://serviel.ddns.net/phpmyadmin/'); //j'ai caché le nom
 define('DB_NAME','siteweb'); //nom de la BDD
 define('USER','root'); //utilisateur qui se connecte
 define('PASS','Ensimtruite.'); //le mot de passe que j'utilise pour me connecté à la BDD
