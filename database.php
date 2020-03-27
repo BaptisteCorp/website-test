@@ -1,14 +1,14 @@
-
 <?php
-/* Connexion à une base MySQL avec l'invocation de pilote */
-$dsn = 'mysql:dbname=siteweb;host=serviel.ddns.net';
-$user = 'root';
-$password = 'Ensimtruite.';
+	define('HOST','serviel.ddns.net');
+	define('DB_NAME','siteweb'); //nom de la BDD
+	define('USER','root'); //utilisateur qui se connecte
+	define('PASS','Ensimtruite.'); //pas de mdp de base
 
-try {
-    $dbh = new PDO($dsn, $user, $password);
-} catch (PDOException $e) {
-    echo 'Connexion échouée : ' . $e->getMessage();
-}
+	try{
+		$db = new PDO("mysql:host=" . HOST . ";dbname=" . DB_NAME, USER, PASS); #définition du chemin de la BDD
+		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); #deux types d'erreur
+	} catch (PDOException $e){
+		echo $e; #affichage de l'erreur de connexion
 
+	}
 ?>
