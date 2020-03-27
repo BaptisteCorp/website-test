@@ -18,7 +18,7 @@
 
             </form>
         <?php
-    $ip = gethostbyname('serviel.ddns.net:7000');
+    $ip = gethostbyip('serviel.ddns.net');
 
     echo $ip;
     ?>
