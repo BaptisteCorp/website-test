@@ -17,11 +17,6 @@
                     <input type="submit" name="formsend" id="formsend" value="Envoyer"><br/>
 
             </form>
-        <?php
-    $ip = gethostbyip('serviel.ddns.net');
-
-    echo $ip;
-    ?>
     <?php
 
         if(isset($_POST['formsend'])){
