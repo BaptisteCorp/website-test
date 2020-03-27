@@ -21,7 +21,7 @@
         </div>
         <p>
             <a href="ajout_fichier.php">Ajouter un fichier</a>
-            <a href="créer_dossier">Créer un Dossier</a>
+            <a href="creer_dossier.php">Créer un Dossier</a>
         </p>
     </body>
 </html>
