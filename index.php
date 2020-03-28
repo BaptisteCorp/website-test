@@ -13,6 +13,10 @@ if (isset($_POST['mdp']) AND $_POST['mdp'] == "admin" AND isset($_POST['pseudo']
     </head>
 
     <body>
+<?php
+    include 'database.php';
+    global $db;
+?>
         <div id="wrapper">
             
             <h1>Bienvenue dans votre cloud</h1>
@@ -20,16 +24,60 @@ if (isset($_POST['mdp']) AND $_POST['mdp'] == "admin" AND isset($_POST['pseudo']
             
             <form method="POST" action="index.php">
                 <p>
-                    <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo"/>
+                    <input type="email" name="lemail" id="lemail" placeholder="Email">
                     <br/>
-                    <input type="password" name="mdp" id="mdp" placeholder="Password"/>
+                    <input type="password" name="lpassword" id="lpassword" placeholder="Password">
                     <br/>
-                    <input type="submit" value="VALIDER" />
+                    <input type="submit" name="formlogin" id="formlogin" value="Login" >
                     <br/>
                     <a href="inscription.php">Sign up</a>
                     <a href="pwd_forget.php">Password forget ?</a>
                 </p>
              </form>
+
+    <?php 
+        if(isset($_POST['formlogin'])){
+            extract($_POST);
+
+            if(!empty($lemail) && !empty($lpassword)){
+
+                $q = $db->prepare("SELECT * FROM users WHERE email = :email");
+                $q->execute(['email' => $lemail]);
+                $result = $q->fetch();
+
+                if($result == true){
+                    //le compte existe bien
+
+                    if(password_verify($lpassword, $result['password'])){
+                        echo "Le mot de passe est bon , connexion";
+                        header('Location: dashboard.php');
+                        exit();
+                    }else{
+                        echo "Le mot de passe est incorrecte";
+                    }
+                }
+                else{
+                    echo "Le compte pourtant l'email " . $lemail . "n'existe pas";
+                }
+            }
+            else{
+                echo "Veuillez completer l'ensemble des champs";
+            }
+        }
+
+
+
+
+
+    ?>
+
+
+
+
+
+
+
+
         </div>
     </body>
 </html>
