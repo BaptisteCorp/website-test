@@ -9,7 +9,8 @@
         <link rel="stylesheet" href="style.css"/>
     </head>
     <nav>
-        <a href="index.php">Acceuil</a>
+        <a href="index.php">Déconnexion</a>
+        <button id=supp_compte>Supprimer compte</button>
     </nav>
     <body>
         <h1>Bienvenue <?php echo $_SESSION["mail"]; ?></h1>
