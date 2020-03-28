@@ -50,6 +50,8 @@ if (isset($_POST['mdp']) AND $_POST['mdp'] == "admin" AND isset($_POST['pseudo']
 
                     if(password_verify($lpassword, $result['password'])){
                         echo "Le mot de passe est bon , connexion";
+                        header('Location: serviel.ddns.net/dashboard.php');
+                        exit();
                     }else{
                         echo "Le mot de passe est incorrecte";
                     }
