@@ -58,7 +58,7 @@
                 }
 
             }else{
-                echo "<font style=\"font family: courrier new;\"><strong>Les champs ne sont pas tous remplies</strong></font>";
+                echo "<font style=\"font family: courrier new;\"><strong>Les champs ne sont pas tous remplis</strong></font>";
             }
         }
 
