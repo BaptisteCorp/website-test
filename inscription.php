@@ -44,7 +44,7 @@
                     if($result == 0){
                         $q= $db->prepare("INSERT INTO users(email,password,pseudo) VALUES(:email,:password,:pseudo)");
                         $q->execute([
-                            'email'=> $email,
+                            'email'=> $semail,
                             'password'=> $hashpass,
                             'pseudo'=> $pseudo
                         ]);
