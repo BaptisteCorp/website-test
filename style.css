@@ -10,6 +10,15 @@ html {
     
 }
 
+.icone:hover{
+    width: 70px;
+    border-color: red;
+}
+.block_dossier{
+    display: inline-block;
+    margin: 10px;
+
+}
 a:hover 
 {
  font-weight: bold;
@@ -93,6 +102,7 @@ a,#stockage,#dossiers,#fichiers{
 
 .icone{
     width:50px;
+    float:inherit;
 }
 
 a{

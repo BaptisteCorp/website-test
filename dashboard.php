@@ -13,14 +13,32 @@
         <div id="stockage">
             <h2>Ici seront stockés tous les fichiers et dossiers</h2>
             <div id="dossiers">
-                <img src="images/dossier.jpg" class="icone"/>
                 <?php
-                    $dossiers=shell_exec("ls -d */");
-                    echo "Il y a $dossiers dossiers";
+                    $dossiers=explode("/\n",shell_exec("ls -d */"));
+                    $nb_dossiers= count( $dossiers );
+                    for ($i=0;$i<($nb_dossiers-1);$i++){ // -1 pour ne pas compter le dernier \n du ls
+                        ?>
+                        <p class="block_dossier">
+                            <img src="images/dossier.jpg" title='<?php echo "$dossiers[$i]"?>' alt= '<?php echo "$dossiers[$i]"?>' class="icone"/>
+                            <br/>
+                            <?php echo "$dossiers[$i]"?>
+                        </p>
+                    <?php }
                 ?>
             </div>
             <div id="fichiers">
-                <img src="images/fichier.png" class="icone"/>
+                <?php
+                    $fichiers=explode("\n",shell_exec("ls -F | grep -v '/$'"));
+                    $nb_fichiers= count( $fichiers );
+                    for ($i=0;$i<($nb_fichiers-1);$i++){ // -1 pour ne pas compter le dernier \n du ls
+                        ?>
+                        <p class="block_dossier">
+                            <img src="images/fichier.png" title='<?php echo "$fichiers[$i]"?>' alt= '<?php echo "$fichiers[$i]"?>' class="icone"/>
+                            <br/>
+                            <?php echo "$fichiers[$i]"?>
+                        </p>
+                    <?php }
+                ?>
             </div>
         </div>
         <p>
