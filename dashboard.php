@@ -1,3 +1,6 @@
+<?php session_start(); //ouverture de la session
+
+?> 
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,7 +12,8 @@
         <a href="index.php">Acceuil</a>
     </nav>
     <body>
-        <h1>Bienvenue admin</h1>
+        <h1>Bienvenue <?php echo $_SESSION["mail"]; ?></h1>
+        
         <div id="stockage">
             <h2>Ici seront stockés tous les fichiers et dossiers</h2>
             <div id="dossiers">

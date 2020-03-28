@@ -1,8 +1,6 @@
-<?php
-if (isset($_POST['mdp']) AND $_POST['mdp'] == "admin" AND isset($_POST['pseudo']) AND $_POST['pseudo'] == "admin" ){ 
-    header('Location:dashboard.php');
-}
-?>
+<?php session_start(); //ouverture de la session
+
+?> 
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -50,6 +48,7 @@ if (isset($_POST['mdp']) AND $_POST['mdp'] == "admin" AND isset($_POST['pseudo']
 
                     if(password_verify($lpassword, $result['password'])){
                         echo "Le mot de passe est bon , connexion";
+                        $_SESSION["mail"]=$lemail;
                         header('Location: dashboard.php');
                         exit();
                     }else{
