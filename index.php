@@ -48,7 +48,7 @@
 
                     if(password_verify($lpassword, $result['password'])){
                         echo "Le mot de passe est bon , connexion";
-                        $_SESSION["mail"]=$lemail;
+                        $_SESSION["pseudo"]=$result['pseudo'];
                         header('Location: dashboard.php');
                         exit();
                     }else{
