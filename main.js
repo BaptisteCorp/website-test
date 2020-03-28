@@ -13,7 +13,7 @@
         console.error("L'API dialog n'est pas prise en charge par votre navigateur");
       }
     });
-    // Récupère le nom choisi
+    // Récupèration du nom choisi
     selectEl.addEventListener('change', function onSelect(e) {
       confirmBtn.value = selectEl.value;
     });

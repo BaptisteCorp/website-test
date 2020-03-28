@@ -14,6 +14,10 @@
             <h2>Ici seront stockés tous les fichiers et dossiers</h2>
             <div id="dossiers">
                 <img src="images/dossier.jpg" class="icone"/>
+                <?php
+                    $dossiers=shell_exec("ls -d */");
+                    echo "Il y a $dossiers dossiers";
+                ?>
             </div>
             <div id="fichiers">
                 <img src="images/fichier.png" class="icone"/>
