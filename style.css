@@ -40,7 +40,7 @@ form,p{
     border-style: solid;
 }
 */
-input,a{
+input,a,button{
     border-radius:7px;
     border-width: 1px;
     border-style: solid;
@@ -53,13 +53,13 @@ input,a{
     font-family: Arial Narrow, sans-serif;
 }
 
-input[type="submit"],a{
+input[type="submit"],a,button{
     color:#808080;
     margin:15px;
     background-color: white;
 }
 
-input[type="submit"]:hover,a:hover{
+input[type="submit"]:hover,a:hover,button:hover{
     color:#7FD3D7;
     border-color: #7FD3D7;
     font-weight: initial;

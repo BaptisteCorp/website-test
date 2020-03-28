@@ -2,7 +2,7 @@
 define('HOST','localhost'); //j'ai caché le nom
 define('DB_NAME','siteweb'); //nom de la BDD
 define('USER','root'); //utilisateur qui se connecte
-define('PASS','Ensimtruite.'); //le mot de passe que j'utilise pour me connecté à la BDD
+define('PASS','Ensimtruite.'); //le mot de passe que j'utilise pour me connecter à la BDD
 try{
  $db = new PDO("mysql:host=" . HOST . ";dbname=" . DB_NAME, USER, PASS);
  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
