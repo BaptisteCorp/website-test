@@ -37,7 +37,7 @@ if (isset($_POST['mdp']) AND $_POST['mdp'] == "admin" AND isset($_POST['pseudo']
 
     <?php 
         if(isset($_POST['formlogin'])){
-            extract($POST);
+            extract($_POST);
 
             if(!empty($lpseudo) && !empty($lemail)){
 
