@@ -1,7 +1,3 @@
-<?php session_start(); //ouverture de la session
-
-?> 
-
 
 <?php
 define('HOST','localhost'); //j'ai caché le nom
