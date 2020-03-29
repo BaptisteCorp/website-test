@@ -49,6 +49,7 @@
                     if(password_verify($lpassword, $result['password'])){
                         echo "Le mot de passe est bon , connexion";
                         $_SESSION["pseudo"]=$result['pseudo'];
+                        $_SESSION['fileUpload']=False;
                         header('Location: dashboard.php');
                         exit();
                     }else{

@@ -10,7 +10,7 @@ html {
     
 }
 
-.icone:hover{
+.fileIcone:hover,.dirIcone:hover{
     width: 70px;
     border-color: red;
 }
@@ -100,12 +100,16 @@ a,#stockage,#dossiers,#fichiers{
     margin:10px;
 }
 
-.icone{
+.fileIcone,.dirIcone{
     width:50px;
     float:inherit;
 }
 
 a{
     text-decoration: none;
+}
+
+button{
+    width: 20%;
 }
 

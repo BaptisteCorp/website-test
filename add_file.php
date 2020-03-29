@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 		if (empty($errors)) {
 			move_uploaded_file($file_tmp, $file);
+			$_SESSION['fileUpload']=True;
 		}
 	}
 

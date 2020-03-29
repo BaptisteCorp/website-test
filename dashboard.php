@@ -1,5 +1,5 @@
 <?php session_start(); //ouverture de la session
-
+ 
 ?> 
 <!DOCTYPE html>
 <html>
@@ -9,11 +9,14 @@
         <link rel="stylesheet" href="style.css"/>
         <?php 
         $pseudo=$_SESSION["pseudo"];
+        if ($pseudo==""){
+            header('Location: index.php');
+        }
         $current_dir="users/$pseudo"; ?>
     </head>
     <nav>
         <a href="index.php">Déconnexion</a>
-        <button id=supp_compte>Supprimer compte</button>
+        <button disabled >Supprimer compte</button>
     </nav>
     <body>
         <h1>Bienvenue <?php echo $pseudo; ?></h1>
@@ -27,7 +30,7 @@
                     for ($i=1;$i<($nb_dossiers);$i++){ // -1 pour ne pas compter le dernier \n du ls
                         ?>
                         <p class="block_dossier">
-                            <img src="images/dossier.jpg" title='<?php echo "$dossiers[$i]"?>' alt= '<?php echo "$dossiers[$i]"?>' class="icone"/>
+                            <img src="images/dossier.jpg" title='<?php echo "$dossiers[$i]"?>' alt= '<?php echo "$dossiers[$i]"?>' class="dirIcone"/>
                             <br/>
                             <?php echo "$dossiers[$i]"?>
                         </p>
@@ -40,18 +43,19 @@
                     $nb_fichiers= count( $fichiers );
                     for ($i=0;$i<($nb_fichiers-1);$i++){ // -1 pour ne pas compter le dernier \n du ls
                         ?>
-                        <p class="block_dossier">
-                            <img src="images/fichier.png" title='<?php echo "$fichiers[$i]"?>' alt= '<?php echo "$fichiers[$i]"?>' class="icone"/>
+                        
+                            <button class='actionFileButton' type='button'><img src="images/fichier.png" title='<?php echo "$fichiers[$i]"?>' alt= '<?php echo "$fichiers[$i]"?>' class="fileIcone"/>
                             <br/>
-                            <?php echo "$fichiers[$i]"?>
-                        </p>
+                            <?php echo "$fichiers[$i]"?></button>
+                        
                     <?php }
                 ?>
             </div>
         </div>
         <p>
             <button id="fileButton">Ajouter un fichier</button>
-            <output aria-live="polite"></output>
+            <output aria-live="polite"><?php if ($_SESSION['fileUpload']){echo "Fichiers uploadés";
+                                                $_SESSION['fileUpload']=False;}?></output>
             <button id="updateDetails">Ajouter un dossier</button>
             <output aria-live="polite"></output>
         </p>
@@ -74,8 +78,19 @@
                 <!-- Le nom de l'élément input détermine le nom dans le tableau $_FILES -->
                 <input type="file" name="files[]" multiple id="fileschosen"/>
                 <input type="submit" value="Envoyer le(s) fichier(s)" />
-                <button value="cancel">Annuler</button>
+                <button value="cancel" id="cancelButton">Annuler</button>
             </form>
+        </dialog>
+        <dialog id="actionFileDialog">
+                <button type="button" id="dowloadFile">Download File</button>
+                <button type="button" id="renameFile">Rename File</button>
+                <button type="button" id="suppFile">Delete File</button>
+                <button value="cancel" id="cancelButton">Annuler</button>
+        </dialog>
+        <dialog id="actionDirDialog">
+                <button type="button" id="renameFile">Rename Directory</button>
+                <button type="button" id="suppFile">Delete Directory</button>
+                <button value="cancel" id="cancelButton">Annuler</button>
         </dialog>
         <script type="text/javascript" src="main.js"></script>
     </body>
