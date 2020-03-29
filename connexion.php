@@ -18,6 +18,7 @@
         <div id="wrapper">
             
             <h1>Bienvenue dans votre cloud</h1>
+            <?php echo $_SESSION['lemail'] ?>
             <img id="cloud"src="images/cloud.png" alt="icone cloud" title="cloud"/>
             
             <form method="POST" action="index.php">
@@ -42,7 +43,7 @@
                 $q = $db->prepare("SELECT * FROM users WHERE email = :email");
                 $q->execute(['email' => $lemail]);
                 $result = $q->fetch();
-                $_SESSION['lemail']= $lemail;
+                $_SESSION["lemail"]=$result['lemail'];
                 if($result == true){
                     //le compte existe bien
 

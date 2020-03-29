@@ -1,3 +1,9 @@
+<?php session_start(); //ouverture de la session
+
+?> 
+
+
+<?php echo $_SESSION['lemail'] ?>
 <?php
  if(isset($_SESSION['lemail'])){
 ?>
