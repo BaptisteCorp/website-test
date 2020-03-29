@@ -17,8 +17,8 @@
 ?>
 
 <?php 
-    if(isset($_SESSION['pseudo'])){
-
+    if(isset($_SESSION['lemail'])){
+        echo "tg"
 
         ?>
         <div id="wrapper">
