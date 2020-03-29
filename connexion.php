@@ -42,7 +42,7 @@
                 $q = $db->prepare("SELECT * FROM users WHERE email = :email");
                 $q->execute(['email' => $lemail]);
                 $result = $q->fetch();
-                $_SESSION["lemail"]=$result['lemail'];
+                $_SESSION['lemail']= $lemail;
                 if($result == true){
                     //le compte existe bien
 
