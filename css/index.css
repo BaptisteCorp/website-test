@@ -2,11 +2,11 @@
 #cloudIcone{
     width:100px;}
 
-input,a{
+input,a,button{
     margin:5px;
     height: 40px;
     width: 60%;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 input[type='submit'],a{

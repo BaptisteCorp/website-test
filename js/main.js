@@ -9,7 +9,7 @@ updateButton.addEventListener('click', function onOpen() {
   if (typeof dirDialog.showModal === "function") {
     dirDialog.showModal();
   } else {
-    console.error("L'API dialog n'est pas prise en charge par votre navigateur");
+    window.alert("L'API dialog n'est pas prise en charge par votre navigateur");
   }
 });
 
@@ -41,7 +41,7 @@ fileButton.addEventListener('click', function onOpen() {
   if (typeof dirDialog.showModal === "function") {
     fileDialog.showModal();
   } else {
-    console.error("L'API dialog n'est pas prise en charge par votre navigateur");
+    window.alert("L'API dialog n'est pas prise en charge par votre navigateur");
   }
 });
 
@@ -77,7 +77,7 @@ fileIcon.addEventListener('click', function onOpen() {
   if (typeof actionFileDialog.showModal === "function") {
     actionFileDialog.showModal();
   } else {
-    console.error("L'API dialog n'est pas prise en charge par votre navigateur");
+    window.alert("L'API dialog n'est pas prise en charge par votre navigateur");
   }
 });
 
@@ -85,6 +85,6 @@ dirIcon.addEventListener('click', function onOpen() {
   if (typeof actionDirDialog.showModal === "function") {
     actionDirDialog.showModal();
   } else {
-    console.error("L'API dialog n'est pas prise en charge par votre navigateur");
+    window.alert("L'API dialog n'est pas prise en charge par votre navigateur");
   }
 });

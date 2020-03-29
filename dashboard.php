@@ -19,7 +19,7 @@
     <!-- Actions de navigation -->
     <nav>
         <a href="deconnexion.php">Déconnexion</a>
-        <button disabled >Supprimer compte</button>
+        <a href="parametres.php">Paramètres</a>
     </nav>
     <body>
         <!-- Affichage  fichiers et dossiers -->
@@ -103,6 +103,6 @@
                 <button value="cancel" id="cancelButton">Annuler</button>
         </dialog>
 
-        <script type="text/javascript" src="main.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
     </body>
 </html>
