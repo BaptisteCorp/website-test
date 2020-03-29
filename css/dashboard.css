@@ -1,0 +1,24 @@
+
+.fileIcone:hover,.dirIcone:hover{
+    width: 70px;}
+
+a,#stockage,#dossiers,#fichiers{
+    border-style: solid;
+    margin:10px;
+}
+
+.fileIcone,.dirIcone{
+    width: 50px;
+    float:inherit;
+}
+#fileButton,#dirButton{
+    margin:5px;
+    height: 40px;
+    width: 25%;
+    font-size: 20px;
+}
+
+#fileButton{
+    margin-left: 15px;
+}
+

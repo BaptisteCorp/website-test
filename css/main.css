@@ -10,25 +10,11 @@ html {
     
 }
 
-.fileIcone:hover,.dirIcone:hover{
-    width: 70px;
-    border-color: red;
-}
-.block_dossier{
-    display: inline-block;
-    margin: 10px;
-
-}
-a:hover 
-{
- font-weight: bold;
-}
-
 nav{
     background-color: white;
     width:100%;
-    border-radius: 10px;
-}
+    border-radius: 10px;}
+
 #wrapper{
     /*Background*/
     background-color: white;
@@ -42,74 +28,33 @@ nav{
 
     /*Position elements inter wrapper*/
     padding: 50px;
-    text-align: center;
-}
-/*
-form,p{
-    border-style: solid;
-}
-*/
+    text-align: center;}
+
+/* Forme générale des elements, la positions est gérée dans le fichier css correspondant à la page*/
 input,a,button{
     border-radius:7px;
     border-width: 1px;
     border-style: solid;
     border-color: #808080;
 
-    height: 40px;
-    width: 60%;
-    margin: 5px;
-    font-size: 30px;
-    font-family: Arial Narrow, sans-serif;
-}
-
-input[type="submit"],a,button{
-    color:#808080;
-    margin:15px;
     background-color: white;
-}
 
+    color:#808080;
+
+    box-shadow: none;}
 input[type="submit"]:hover,a:hover,button:hover{
     color:#7FD3D7;
+    border-color: #7FD3D7;}
+input[type="email"]:focus,input[type="password"]:focus{
     border-color: #7FD3D7;
-    font-weight: initial;
-}
-
-input[type="text"]:focus,input[type="password"]:focus{
-    border-color: #7FD3D7;
-    border-radius: 7px;
-}
-
+    text-align: center;}
 input::placeholder{
     text-align:center;
     width:auto;
 
     font-family: "Source Sans Pro", Helvetica, sans-serif;
-    font-weight: 400;
-}
+    font-weight: 400;}
 
-#cloud{
-    width:100px;
-}
-
-nav+input{
-    width:10px;
-}
-
-a,#stockage,#dossiers,#fichiers{
-    border-style: solid;
-    margin:10px;
-}
-
-.fileIcone,.dirIcone{
-    width:50px;
-    float:inherit;
-}
-
+/* Enlever le souligné des liens*/
 a{
-    text-decoration: none;
-}
-
-button{
-    width: 20%;
-}
-
+    text-decoration: none;}

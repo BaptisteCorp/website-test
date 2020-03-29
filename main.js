@@ -1,4 +1,5 @@
-var updateButton = document.getElementById('updateDetails');
+// Boite de dialogue create dir
+var updateButton = document.getElementById('dirButton');
 var dirDialog = document.getElementById('dirDialog');
 var outputBox = document.getElementsByTagName('output')[1];
 var selectEl = document.getElementById('select');
@@ -17,10 +18,17 @@ dirDialog.addEventListener('close', function onClose() {
   if (selectEl.value==""){
     outputBox.value = "Vous n'avez pas renseigné de nom";
   }else{
+    const xhttp = new XMLHttpRequest();
+    const destination='add_dir.php?nom_dossier='+selectEl.value;
+    
+    xhttp.open("GET",destination);
+    xhttp.send();
     outputBox.value = "Création du dossier \"" +selectEl.value + "\"";
+    selectEl.value=="";
   }
 });
 
+// Boite de dialogue upload file
 var fileButton = document.getElementById('fileButton');
 var fileDialog = document.getElementById('fileDialog');
 var outputBoxfile = document.getElementsByTagName('output')[0];
@@ -61,7 +69,7 @@ cancelButton.addEventListener('click', function() {
 });
 
 var fileIcon = document.getElementsByClassName('actionFileButton')[0];
-var dirIcon = document.getElementsByClassName('dirIcone');
+var dirIcon = document.getElementsByClassName('actionDirButton')[0];
 var actionFileDialog= document.getElementById('actionFileDialog');
 var actionDirDialog= document.getElementById('actionDirDialog');
 
