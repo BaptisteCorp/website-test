@@ -15,6 +15,12 @@
     include 'database.php';
     global $db;
 ?>
+
+<?php 
+    if(isset($_SESSION['pseudo'])){
+
+
+        ?>
         <div id="wrapper">
             
             <h1>Bienvenue dans votre cloud</h1>
@@ -32,6 +38,8 @@
                     <a href="pwd_forget.php">Password forget ?</a>
                 </p>
              </form>
+    
+    
 
     <?php 
         if(isset($_POST['formlogin'])){
@@ -56,7 +64,7 @@
                     }
                 }
                 else{
-                    echo "Le compte pourtant l'email " . $lemail . "n'existe pas";
+                    echo "Le compte portant l'email " . $lemail . "n'existe pas";
                 }
             }
             else{
@@ -64,11 +72,14 @@
             }
         }
 
-
-
-
-
     ?>
+
+
+
+
+
+
+    
 
 
 
@@ -78,5 +89,16 @@
 
 
         </div>
+
+    <?php
+}else{
+    ?>
+    <div id="wrapper">
+            
+            <h1>Bienvenue dans votre cloud</h1>
+            <?php echo $_SESSION['pseudo'] ?>
+    </div>
+}
+
     </body>
 </html>
