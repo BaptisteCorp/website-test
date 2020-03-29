@@ -5,7 +5,8 @@
 <?php
  if(isset($_SESSION['pseudo'])){
 ?>
-  <li id="services"><a href="dashboard.php">Bienvenue <?php echo $_SESSION['lemail'];?></a></li>
+
+  <li id="services"><a href="dashboard.php">Aller sur son Dashboard <?php echo $_SESSION['lemail'];?></a></li>
   <li id="services"><a href="deconnexion.php">Deconnexion</a></li>
 <?php                       
  }else{
