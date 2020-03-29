@@ -1,7 +1,7 @@
 <?php session_start(); //ouverture de la session
 
 ?> 
-
+<?php include('connexion.php'); ?>
 
 <?php echo $_SESSION['lemail'] ?>
 <?php

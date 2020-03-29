@@ -18,7 +18,6 @@
         <div id="wrapper">
             
             <h1>Bienvenue dans votre cloud</h1>
-            <?php echo $_SESSION['lemail'] ?>
             <img id="cloud"src="images/cloud.png" alt="icone cloud" title="cloud"/>
             
             <form method="POST" action="index.php">
@@ -50,8 +49,9 @@
                     if(password_verify($lpassword, $result['password'])){
                         echo "Le mot de passe est bon , connexion";
                         $_SESSION["pseudo"]=$result['pseudo'];
-                        header('Location: dashboard.php');
-                        exit();
+                        echo $_SESSION["lemail"]=$result['lemail'];
+                        //header('Location: dashboard.php');
+                        //exit();
                     }else{
                         echo "Le mot de passe est incorrecte";
                     }
