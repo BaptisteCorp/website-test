@@ -15,7 +15,7 @@
         $current_dir="users/$pseudo"; ?>
     </head>
     <nav>
-        <a href="index.php">Déconnexion</a>
+        <a href="deconnexion.php">Déconnexion</a>
         <button disabled >Supprimer compte</button>
     </nav>
     <body>

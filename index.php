@@ -57,7 +57,7 @@
                     }
                 }
                 else{
-                    echo "Le compte pourtant l'email " . $lemail . "n'existe pas";
+                    echo "Le compte portant l'email " . $lemail . "n'existe pas";
                 }
             }
             else{
