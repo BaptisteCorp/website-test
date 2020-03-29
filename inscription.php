@@ -48,7 +48,9 @@
                             'password'=> $hashpass,
                             'pseudo'=> $pseudo
                         ]);
+                        shell_exec("mkdir users/$pseudo/");
                         echo "<font style=\"font family: courrier new;\"><strong>Le compte a été crée</strong></font>";
+                        header('Location: index.php');
                         }else{
                             echo "<font style=\"font family: courrier new;\"><strong>Un Email identique existe déjà</strong></font>";
                         }
