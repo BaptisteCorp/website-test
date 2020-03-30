@@ -20,6 +20,7 @@
     <nav>
         <a href="deconnexion.php">Déconnexion</a>
         <a href="parametres.php">Paramètres</a>
+        <a href='/users/Paulo/ch2.jpg' Download>test dowload</a>
     </nav>
     <body>
         <!-- Affichage  fichiers et dossiers -->
@@ -90,17 +91,17 @@
 
         <!-- Boite de dialogue actions files -->
         <dialog id="actionFileDialog">
-                <button type="button" id="dowloadFile">Download File</button>
+                <a href="<?php echo $current_dir ?>/Capture.PNG" Download >Download File</a>
                 <button type="button" id="renameFile">Rename File</button>
                 <button type="button" id="suppFile">Delete File</button>
-                <button value="cancel" id="cancelButton">Annuler</button>
+                <button value="cancel" id="cancelFileButton">Annuler</button>
         </dialog>
 
         <!-- Boite de dialogue actions dossiers -->
         <dialog id="actionDirDialog">
                 <button type="button" id="renameFile">Rename Directory</button>
                 <button type="button" id="suppFile">Delete Directory</button>
-                <button value="cancel" id="cancelButton">Annuler</button>
+                <button value="cancel" id="cancelDirButton">Annuler</button>
         </dialog>
 
         <script type="text/javascript" src="js/main.js"></script>
