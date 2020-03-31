@@ -18,16 +18,16 @@
 
     <!-- Actions de navigation -->
     <nav>
-        <a href="deconnexion.php">Déconnexion</a>
         <a href="parametres.php">Paramètres</a>
-        <a href='/users/Paulo/ch2.jpg' Download>test dowload</a>
+        <a href="deconnexion.php">Déconnexion</a>
     </nav>
     <body>
         <!-- Affichage  fichiers et dossiers -->
         <div id="stockage">
             <h1>Bienvenue <?php echo $pseudo; ?></h1>
-            <h2>Ici sont stockés tous tes fichiers et dossiers</h2>
+            
             <div id="dossiers">
+                <h2>Ici sont stockés les dossiers</h2>
                 <?php
                     $dossiers=explode("$current_dir/",shell_exec("ls -d $current_dir/*/"));
                     $nb_dossiers= count( $dossiers );
@@ -40,28 +40,35 @@
                     <?php }?>
             </div>
             <div id="fichiers">
+            <h2>Ici sont stockés les fichiers </h2>
                 <?php
                     $fichiers=explode("\n",shell_exec("ls -F $current_dir| grep -v '/$'"));
                     $nb_fichiers= count( $fichiers );
                     for ($i=0;$i<($nb_fichiers-1);$i++){ // -1 pour ne pas compter le dernier \n du ls
                         if (strlen($fichiers[$i])>13){
-                            $fichiers[$i]=substr($fichiers[$i],0,10).'...';
+                            $affiche=substr($fichiers[$i],0,10).'...';
+                        }
+                        else{
+                            $affiche=$fichiers[$i];
                         }
                 ?>
                         
-                        <button class='actionFileButton' type='button'><img src="images/fichier.png" title='<?php echo "$fichiers[$i]"?>' alt= '<?php echo "$fichiers[$i]"?>' class="fileIcone"/>
+                        <button class='actionFileButton' type='button'><img src="images/fichier.png" title='<?php echo "$affiche"?>' alt= '<?php echo "$affiche"?>' class="fileIcone"/>
                         <br/>
-                        <?php echo "$fichiers[$i]"?></button>
+                        <?php echo "$affiche"?></button>
                         
                     <?php }?>
             </div>
         </div>
         <!-- Boutons d'ajout -->
-        <p>
-            <button id="fileButton">Ajouter un fichier</button>
+        <p id="paraButton">
+            <div id="fileButton">
+                <input type="file" name="files[]" multiple id="fileschosen"/>
+                <button id="envoiFile">Envoyer</button>
+            </div>
             <output aria-live="polite"><?php if ($_SESSION['fileUpload']){echo "Fichiers uploadés";
                                                 $_SESSION['fileUpload']=False;}?></output>
-            <button id="dirButton">Ajouter un dossier</button>
+            <button id="dirButton">Creer un dossier</button>
             <output aria-live="polite"></output>
         </p>
 
@@ -79,19 +86,9 @@
             </form>
         </dialog>
 
-        <!-- Boite de dialogue upload file -->
-        <dialog id="fileDialog">
-            <form enctype="multipart/form-data" method="post" id="form_file">
-                <!-- Le nom de l'élément input détermine le nom dans le tableau $_FILES -->
-                <input type="file" name="files[]" multiple id="fileschosen"/>
-                <input type="submit" value="Envoyer le(s) fichier(s)" />
-                <button value="cancel" id="cancelButton">Annuler</button>
-            </form>
-        </dialog>
-
         <!-- Boite de dialogue actions files -->
         <dialog id="actionFileDialog">
-                <a href="<?php echo $current_dir ?>/Capture.PNG" Download >Download File</a>
+                <a href="<?php echo $current_dir ?>/" Download id="fileDownloader">Download File</a>
                 <button type="button" id="renameFile">Rename File</button>
                 <button type="button" id="suppFile">Delete File</button>
                 <button value="cancel" id="cancelFileButton">Annuler</button>
@@ -103,7 +100,38 @@
                 <button type="button" id="suppFile">Delete Directory</button>
                 <button value="cancel" id="cancelDirButton">Annuler</button>
         </dialog>
+        <script type= "text/javascript">
+            var nb_files = <?php echo json_encode($fichiers); ?>;
+            var actionFileDialog= document.getElementById('actionFileDialog');
+            var cancelFileButton= document.getElementById('cancelFileButton');
+            const dirUser = document.getElementById('fileDownloader').href;
 
+            for (var i in nb_files){
+                if (i==nb_files.length-1){
+                    break
+                }
+                var fileIcon = document.getElementsByClassName('actionFileButton')[i];
+
+                (function (arg1){
+                    fileIcon.addEventListener('click', function onOpen() {
+                        if (typeof actionFileDialog.showModal === "function") {
+                            actionFileDialog.showModal();
+                            document.getElementById('fileDownloader').href+=arg1;
+                            
+                        } else {
+                            window.alert("L'API dialog n'est pas prise en charge par votre navigateur");
+                        }
+                    });
+                })(nb_files[i]);
+
+                (function (arg1){
+                    cancelFileButton.addEventListener('click', function() {
+                        document.getElementById('fileDownloader').href=dirUser;
+                        actionFileDialog.close('Annulé');   
+                    });
+                })(nb_files[i]);
+            }
+        </script>
         <script type="text/javascript" src="js/main.js"></script>
     </body>
 </html>

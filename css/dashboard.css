@@ -2,8 +2,8 @@
 .fileIcone:hover,.dirIcone:hover{
     width: 70px;}
 
-a,#stockage,#dossiers,#fichiers{
-    border-style: solid;
+a,#dossiers,#fichiers{
+    text-align: center;
     margin:10px;
 }
 
@@ -17,6 +17,16 @@ a,#stockage,#dossiers,#fichiers{
     height: 40px;
     width: 25%;
     font-size: 20px;
+    display: inline;
+    
+    
+}
+#fichiers{
+    margin-top: 25px;
+}
+#paraButton{
+    margin-top: 25px;
+    text-align: center;
 }
 nav{
     font-size: 20px;
@@ -25,5 +35,9 @@ nav{
 
 nav a{
     padding: 5px;
+}
+
+dialog{
+    background-color: #3F3F3F;
 }
 

@@ -28,26 +28,14 @@ dirDialog.addEventListener('close', function onClose() {
   }
 });
 
-// Boite de dialogue upload file
+// Upload file
 var fileButton = document.getElementById('fileButton');
 var fileDialog = document.getElementById('fileDialog');
 var outputBoxfile = document.getElementsByTagName('output')[0];
+var envoiFile=document.getElementById('envoiFile');
 const url = 'add_file.php';
-var form2 = document.getElementById('form_file');
-const cancelButton = document.getElementById('cancelButton');
 
-
-fileButton.addEventListener('click', function onOpen() {
-  if (typeof dirDialog.showModal === "function") {
-    fileDialog.showModal();
-  } else {
-    window.alert("L'API dialog n'est pas prise en charge par votre navigateur");
-  }
-});
-
-form2.addEventListener('submit', e => {
-  e.preventDefault();
-
+envoiFile.addEventListener('click', function() {
   const files = document.querySelector('[type=file]').files;
   const formData = new FormData();
 
@@ -64,28 +52,11 @@ form2.addEventListener('submit', e => {
   document.location.href="dashboard.php"; 
 })
 
-cancelButton.addEventListener('click', function() {
-  fileDialog.close('Annulé');
-});
 
-var fileIcon = document.getElementsByClassName('actionFileButton')[0];
 var dirIcon = document.getElementsByClassName('actionDirButton')[0];
-var actionFileDialog= document.getElementById('actionFileDialog');
 var actionDirDialog= document.getElementById('actionDirDialog');
-var cancelFileButton= document.getElementById('cancelFileButton');
 var cancerDirButton = document.getElementById('cancelDirButton');
 
-fileIcon.addEventListener('click', function onOpen() {
-  if (typeof actionFileDialog.showModal === "function") {
-    actionFileDialog.showModal();
-  } else {
-    window.alert("L'API dialog n'est pas prise en charge par votre navigateur");
-  }
-});
-
-cancelFileButton.addEventListener('click', function() {
-  actionFileDialog.close('Annulé');
-});
 
 dirIcon.addEventListener('click', function onOpen() {
   if (typeof actionDirDialog.showModal === "function") {

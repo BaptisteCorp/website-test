@@ -11,9 +11,13 @@ html {
 }
 
 nav{
-    background-color: white;
+    background: initial;
     width:100%;
-    border-radius: 10px;}
+    border-radius: 10px;
+    text-align: right;
+    margin-left: -20px;}
+    
+    
 
 #wrapper{
     /*Background*/
