@@ -14,8 +14,7 @@ a,#dossiers,#fichiers{
 #fileButton,#dirButton{
     margin:5px;
     margin-left: 15px;
-    height: 40px;
-    width: 25%;
+    
     font-size: 20px;
     display: inline;
     
@@ -37,7 +36,4 @@ nav a{
     padding: 5px;
 }
 
-dialog{
-    background-color: #3F3F3F;
-}
 

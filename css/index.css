@@ -2,6 +2,8 @@
 #cloudIcone{
     width:100px;}
 
+
+
 input,a,button{
     margin:5px;
     height: 40px;
@@ -11,4 +13,10 @@ input,a,button{
 
 input[type='submit'],a{
     margin:15px;
+}
+
+.retour{
+    display: inline-block;
+    text-align: center;
+    float: none;
 }

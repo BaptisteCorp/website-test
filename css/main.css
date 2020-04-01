@@ -1,7 +1,10 @@
 html {
     /*Background*/
     height: 100%;
-    background-image: linear-gradient(45deg,#CCEEFF,#CCFFCC) ;
+    background-image: linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35)) ;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    
 
     /*Police écriture*/
     font-family: Arial Narrow, sans-serif;
@@ -17,7 +20,13 @@ nav{
     text-align: right;
     margin-left: -20px;}
     
-    
+#icone{
+    width:50px;
+    text-align: right;
+    display: block;
+    margin-left: 50px;
+
+}
 
 #wrapper{
     /*Background*/
@@ -61,4 +70,14 @@ input::placeholder{
 
 /* Enlever le souligné des liens*/
 a{
-    text-decoration: none;}
+    text-decoration: none;
+    padding: 5px;
+    font-family: Arial Narrow, sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+}
+    
+
+
+dialog{
+    background-color: #777777;}

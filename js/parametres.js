@@ -1,15 +1,15 @@
-var mdpButton = document.getElementById('changer_mdp');
-var mdpButtonDialog= document.getElementById('mdpDialog');
+var suppButton = document.getElementById('suppButton');
+var suppDialog= document.getElementById('suppDialog');
 var cancelButton = document.getElementById('cancel');
 
-mdpButton.addEventListener('click', function onOpen() {
-    if (typeof mdpButtonDialog.showModal === "function") {
-      mdpButtonDialog.showModal();
+suppButton.addEventListener('click', function onOpen() {
+    if (typeof suppDialog.showModal === "function") {
+      suppDialog.showModal();
     } else {
       window.alert("L'API dialog n'est pas prise en charge par votre navigateur");
     }
   });
 
 cancelButton.addEventListener('click', function() {
-  mdpButtonDialog.close('Annulé');
+  suppDialog.close('Annulé');
 });

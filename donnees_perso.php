@@ -21,19 +21,23 @@
     </nav>
     <body>
         <div id="wrapper">
-            <a href=dashboard.php class='retour'>Retour accueil</a>
-            <a href="donnees_perso.php" class='retour'>Données personnelles</a>
-            <button  id="suppButton">Supprimer compte</button>
-            <button >Infos stockage</button>
+            <a href=parametres.php class='retour'>Retour</a>
+            <h1>Voici les données :</h1>
+            <p>
+                Pseudo = Tartenpion<br/>
+                Email = test@hotmail.fr<br/>
+                Mot de passe = CoucoujesuisLa40
+            </p>
+            <button disabled>Changer Pseudo</button><br/>
+            <button disabled>Changer mot de passe</button>
+            <button disabled>Changer email</button>
             
         </div>
 
-        <dialog id="suppDialog">
-            <h1>Attention, la suppression du compte efface vos données stockées dans le cloud. Voulez-vous continuer ?</h1>
-            <button disabled>Oui</button>
-            <button id="cancel">Non</button>
+        <dialog id="mdpDialog">
+            <button>Shure</button>
+            <button id="cancel">Cancel</button>
         </dialog>
         <script type="text/javascript" src="/js/parametres.js"></script>
-        <script type="text/javascript" src="/js/main.js"></script>
     </body>
 </html>

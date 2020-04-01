@@ -18,6 +18,7 @@
 
     <!-- Actions de navigation -->
     <nav>
+        <img src=/images/cloud.png title='icone' id='icone'>
         <a href="parametres.php">Paramètres</a>
         <a href="deconnexion.php">Déconnexion</a>
     </nav>
@@ -38,9 +39,11 @@
                         <?php echo "$dossiers[$i]"?></button>
                         
                     <?php }?>
+                <button id="dirButton">Créer un dossier</button>
+                <output aria-live="polite"></output>
             </div>
             <div id="fichiers">
-            <h2>Ici sont stockés les fichiers </h2>
+                <h2>Ici sont stockés les fichiers </h2>
                 <?php
                     $fichiers=explode("\n",shell_exec("ls -F $current_dir| grep -v '/$'"));
                     $nb_fichiers= count( $fichiers );
@@ -58,20 +61,14 @@
                         <?php echo "$affiche"?></button>
                         
                     <?php }?>
+                
+                    <input type="file" name="files[]" multiple id="fileschosen"/>
+                    <button id="envoiFile">Envoyer</button>
+                
+                <output aria-live="polite"><?php if ($_SESSION['fileUpload']){echo "Fichiers importés";
+                                                $_SESSION['fileUpload']=False;}?></output>
             </div>
         </div>
-        <!-- Boutons d'ajout -->
-        <p id="paraButton">
-            <div id="fileButton">
-                <input type="file" name="files[]" multiple id="fileschosen"/>
-                <button id="envoiFile">Envoyer</button>
-            </div>
-            <output aria-live="polite"><?php if ($_SESSION['fileUpload']){echo "Fichiers uploadés";
-                                                $_SESSION['fileUpload']=False;}?></output>
-            <button id="dirButton">Creer un dossier</button>
-            <output aria-live="polite"></output>
-        </p>
-
 
         <!-- Boites de dialogue pour les actions -->
 
@@ -88,23 +85,26 @@
 
         <!-- Boite de dialogue actions files -->
         <dialog id="actionFileDialog">
-                <a href="<?php echo $current_dir ?>/" Download id="fileDownloader">Download File</a>
-                <button type="button" id="renameFile">Rename File</button>
-                <button type="button" id="suppFile">Delete File</button>
+                <h1 id="nom_file"></h1>
+                <a href="<?php echo $current_dir ?>/" Download id="fileDownloader">Télécharger</a>
+                <button type="button" id="renameFile">Renommer</button>
+                <button type="button" id="suppFile">Supprimer</button>
                 <button value="cancel" id="cancelFileButton">Annuler</button>
         </dialog>
 
         <!-- Boite de dialogue actions dossiers -->
         <dialog id="actionDirDialog">
-                <button type="button" id="renameFile">Rename Directory</button>
-                <button type="button" id="suppFile">Delete Directory</button>
+                <button type="button" id="renameFile">Renomer</button>
+                <button type="button" id="suppFile">Supprimer</button>
                 <button value="cancel" id="cancelDirButton">Annuler</button>
         </dialog>
+
         <script type= "text/javascript">
             var nb_files = <?php echo json_encode($fichiers); ?>;
             var actionFileDialog= document.getElementById('actionFileDialog');
             var cancelFileButton= document.getElementById('cancelFileButton');
             const dirUser = document.getElementById('fileDownloader').href;
+
 
             for (var i in nb_files){
                 if (i==nb_files.length-1){
@@ -114,6 +114,7 @@
 
                 (function (arg1){
                     fileIcon.addEventListener('click', function onOpen() {
+                        document.getElementById('nom_file').innerHTML=arg1
                         if (typeof actionFileDialog.showModal === "function") {
                             actionFileDialog.showModal();
                             document.getElementById('fileDownloader').href+=arg1;
@@ -132,6 +133,6 @@
                 })(nb_files[i]);
             }
         </script>
-        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/dashboard.js"></script>
     </body>
 </html>
