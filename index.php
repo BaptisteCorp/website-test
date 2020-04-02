@@ -52,6 +52,8 @@
                         if(password_verify($lpassword, $result['password'])){
                             echo "Le mot de passe est bon , connexion";
                             $_SESSION["pseudo"]=$result['pseudo']; //permet de récupérer le pseudo de la personne qui se connecte
+                            $_SESSION["lemail"]=$result['lemail'];
+                            $_SESSION["lpassword"]=$result['lpassword'];
                             $_SESSION['fileUpload']=False;
                             header('Location: dashboard.php');
                             exit();

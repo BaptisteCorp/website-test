@@ -1,6 +1,8 @@
 <?php session_start(); //ouverture de la session
     //Récuperation du pseudo
     $pseudo=$_SESSION["pseudo"];
+    $email=$_SESSION["lemail"];
+    $password=$_SESSION["lpassword"];
     if ($pseudo==""){
         header('Location: index.php');
     }
@@ -25,8 +27,8 @@
             <h1>Voici les données :</h1>
             <p>
                 Pseudo = <?php echo $pseudo ?><br/>
-                Email = test@hotmail.fr<br/>
-                Mot de passe = CoucoujesuisLa40
+                Email = <?php echo $email ?><br/>
+                Mot de passe = <?php echo $password ?>
             </p>
             <button disabled>Changer Pseudo</button><br/>
             <button disabled>Changer mot de passe</button>
