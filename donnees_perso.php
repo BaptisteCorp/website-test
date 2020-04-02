@@ -24,7 +24,7 @@
             <a href=parametres.php class='retour'>Retour</a>
             <h1>Voici les données :</h1>
             <p>
-                Pseudo = <?php $pseudo ?> <br/>
+                Pseudo = $pseudo <br/>
                 Email = test@hotmail.fr<br/>
                 Mot de passe = CoucoujesuisLa40
             </p>
