@@ -10,7 +10,7 @@
     width: 70px;}
 
 a,#dossiers,#fichiers{
-    text-align: left;
+    text-align: center;
     margin:10px;
 }
 
@@ -37,10 +37,10 @@ a,#dossiers,#fichiers{
 #nav{
     font-size: 20px;
     padding: 10px;
+
     border-bottom: none;
     border-radius: 20px;
 }
-
 #nav a{
     padding: 5px;
     text-align: center;

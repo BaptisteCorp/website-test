@@ -28,13 +28,17 @@
             <p>
                 Pseudo = <?php echo $pseudo ?><br/>
                 Email = <?php echo $email ?><br/>
-                Mot de passe = <?php echo $password ?>
             </p>
-            <button disabled>Changer Pseudo</button><br/>
+
+            <form action="changement_pseudo.php" method="get" target="_blank">
+            <button type="submit">Changer de pseudo</button>
+            </form>
+            <form action="changement_email.php" method="get" target="_blank">
+            <button type="submit">Changer d'email</button>
+            </form>
             <form action="changement_mdp.php" method="get" target="_blank">
             <button type="submit">Changer de mdp</button>
             </form>
-            <button disabled>Changer email</button>
             
         </div>
 
