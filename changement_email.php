@@ -14,6 +14,8 @@
         <title>Paramètres</title>
         <link rel='stylesheet' href='css/main.css'>
         <link rel='stylesheet' href='css/index.css'>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+        <link rel='stylesheet' href='css/param.css'>
     </head>
     <nav>
         <img src=/images/cloud.png title='icone' id='icone'>

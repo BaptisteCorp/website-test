@@ -19,6 +19,8 @@
         <title>Paramètres</title>
         <link rel='stylesheet' href='css/main.css'>
         <link rel='stylesheet' href='css/index.css'>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+        <link rel='stylesheet' href='css/param.css'>
     </head>
     <body>
         <img src=/images/cloud.png title='icone' id='icone'>
@@ -30,15 +32,9 @@
                 Email = <?php echo $email ?><br/>
             </p>
 
-            <form action="changement_pseudo.php" method="get" target="_blank">
-            <button type="submit">Changer de pseudo</button>
-            </form>
-            <form action="changement_email.php" method="get" target="_blank">
-            <button type="submit">Changer d'email</button>
-            </form>
-            <form action="changement_mdp.php" method="get" target="_blank">
-            <button type="submit">Changer de mdp</button>
-            </form>
+            <a href="changement_pseudo.php">Changer de pseudo</a>
+            <a href="changement_email.php">Changer d'email</a>
+            <a href="changement_mdp.php">Changer de mdp</a>
             
         </div>
 

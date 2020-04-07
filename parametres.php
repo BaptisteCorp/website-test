@@ -18,8 +18,11 @@
         <link rel='stylesheet' href='css/index.css'>
         <link rel='stylesheet' href='css/param.css'>
     </head>
-    <body>
+    <nav>
         <img src=/images/cloud.png title='icone' id='icone'>
+    </nav>
+    <body>
+        
         <div id="wrapper">
             <a href=dashboard.php class='retour'>Retour accueil</a>
             <a href="donnees_perso.php" class='retour'>Données personnelles</a>
