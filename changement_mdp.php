@@ -1,6 +1,6 @@
 <?php session_start(); //ouverture de la session
     //Récuperation du pseudo
-    $pseudo=$_SESSION["pseudo"];
+    pseudo=$_SESSION["pseudo"];
     $email=$_SESSION["lemail"];
     $password=$_SESSION["lpassword"];
     //Récuperation du dossier usilisateur correspondant au pseudo
@@ -38,7 +38,7 @@
                 			include 'database.php';
     						global $db;
 
-                			$q= $db->prepare("UPDATE users SET password=:password  WHERE $pseudo=pseudo");
+                			$q= $db->prepare("UPDATE users SET password=:password  WHERE pseudo=:pseudo");
                         	$q->execute([
                             'password'=> $new_password
                         	]);
