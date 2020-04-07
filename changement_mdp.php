@@ -38,12 +38,16 @@
                 		if($new_password == $newc_password){
                 			include 'database.php';
     						global $db;
+    						$options = [
+                        		'cost' => 12,
+                    		];
 
+                    		$hashpass = password_hash($new_password, PASSWORD_BCRYPT, $options);
                 			$q= $db->prepare("UPDATE users SET password = :password WHERE pseudo = '$pseudo' ");
                         	$q->execute([
-                            'password'=> $new_password
+                            'password'=> $hashpass
                         	]);
-                        	$_SESSION["lpassword"]=$new_password;
+                        	
                         	echo "<font style=\"font family: courrier new;\"><strong>Le mdp a été changé merci de vous reconnecter</strong></font>";
 
                 }else{
