@@ -43,6 +43,7 @@
                         	$q->execute([
                             'password'=> $new_password
                         	]);
+                        	$_SESSION["lpassword"]=$new_password;
                         	echo "<font style=\"font family: courrier new;\"><strong>Le mdp a été changé merci de vous reconnecter</strong></font>";
 
                 }else{
