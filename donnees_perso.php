@@ -40,6 +40,6 @@
             <button>Shure</button>
             <button id="cancel">Cancel</button>
         </dialog>
-        <script type="text/javascript" src="/js/parametres.js"></script>
+        <script type="text/javascript" src="/js/main.js"></script>
     </body>
 </html>

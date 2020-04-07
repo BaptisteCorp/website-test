@@ -52,4 +52,3 @@ envoiFile.addEventListener('click', function() {
   document.location.href="dashboard.php"; 
 })
 
-

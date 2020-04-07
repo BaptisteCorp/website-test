@@ -1,5 +1,7 @@
 <?php session_start(); //ouverture de la session
-
+    if (isset($_SESSION["pseudo"])){
+        header('Location: dashboard.php');
+    }
 ?> 
 
 <!DOCTYPE html>
@@ -7,31 +9,50 @@
     <head>
         <title>Homepage</title>
         <meta charset="utf-8"/>
-        <link rel="stylesheet" href="css/main.css"/>
+        <!--<link rel="stylesheet" href="css/main.css"/>-->
         <link rel="stylesheet" href="css/index.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     </head>
 
+    <nav>
+        <a href="inscription.php" id="inscription">Pas de compte ?</a>
+    </nav>
     <body>
         <?php
             include 'database.php';
             global $db;
         ?>
         <!-- Affichage page de connexion -->
-        <div id="wrapper">
-            <h1>Bienvenue dans votre cloud</h1>
-            <img id="cloudIcone"src="images/cloud.png" alt="icone cloud" title="cloudIcone"/>
+        <div class="login-content">
                 
             <form method="POST" action="index.php">
-                <p>
-                    <input type="email" name="lemail" id="lemail" placeholder="Email">
-                    <br/>
-                    <input type="password" name="lpassword" id="lpassword" placeholder="Password">
-                    <br/>
-                    <input type="submit" name="formlogin" id="formlogin" value="Login" >
-                    <br/>
-                    <a href="inscription.php">Sign up</a>
-                    <a href="pwd_forget.php">Password forget ?</a>
-                </p>
+
+                <h2 class='title'>Bienvenue</h2>
+                <img id="cloudIcone"src="images/cloud.png" />
+
+                <div class="input-div mail">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class='div'>
+                        <h5>Email</h5>
+                        <input type="email" name="lemail" id="lemail" class="input">
+                    </div>
+                </div>
+                <div class="input-div pass">
+                    <div class='i'>
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class='div'>
+                        <h5>Password</h5>
+                        <input type="password" name="lpassword" id="lpassword" class="input">
+                    </div>
+                </div>
+                
+                <a href="pwd_forget.php" >Mot de passe oublié ?</a>
+                <input type="submit" name="formlogin" id="formlogin" value="Login" class="btn">
+                
             </form>
         </div>
 
@@ -70,5 +91,6 @@
                 }
             }
         ?>
+        <script type="text/javascript" src="js/index.js"></script>
     </body>
 </html>

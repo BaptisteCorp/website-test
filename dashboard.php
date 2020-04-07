@@ -88,7 +88,7 @@
                 <h1 id="nom_file"></h1>
                 <a href="<?php echo $current_dir ?>/" Download id="fileDownloader">Télécharger</a>
                 <button type="button" id="renameFile">Renommer</button>
-                <button type="button" id="suppFile">Supprimer</button>
+                <button type="button" id="suppFile" disabled>Supprimer</button>
                 <button value="cancel" id="cancelFileButton">Annuler</button>
         </dialog>
 
@@ -96,7 +96,7 @@
         <dialog id="actionDirDialog">
                 <h1 id="nom_dir"></h1>
                 <button type="button" id="renameDir">Renomer</button>
-                <button type="button" id="suppDir">Supprimer</button>
+                <button type="button" id="suppDir" disabled>Supprimer</button>
                 <button value="cancel" id="cancelDirButton">Annuler</button>
         </dialog>
 
