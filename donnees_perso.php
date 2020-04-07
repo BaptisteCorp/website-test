@@ -36,7 +36,7 @@
             <button type="submit">Changer de pseudo</button>
             </form>
             <form action="changement_email.php" method="get" target="_blank">
-            <button type="submit">Changer d'email'</button>
+            <button type="submit">Changer d'email</button>
             </form>
             <form action="changement_mdp.php" method="get" target="_blank">
             <button type="submit">Changer de mdp</button>
