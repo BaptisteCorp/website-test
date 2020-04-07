@@ -20,10 +20,10 @@
     </nav>
     <body>
         <div id="wrapper">
-        	<a href=dashboard.php class='retour'>Retour accueil</a>
+            <a href=dashboard.php class='retour'>Retour accueil</a>
             <form method="post">
-                    <input type="password" name="new_password" id="new_password" placeholder="Votre Nouveau Mot de Passe"><br/>
-                    <input type="password" name="newc_password" id="newc_password" placeholder="Confirmer Votre Nouveau Mot de Passe"><br/>
+                    <input type="password" name="new_password" id="new_password" placeholder="Votre Nouvel email"><br/>
+                    <input type="password" name="newc_password" id="newc_password" placeholder="Confirmer Votre Nouvel email"><br/>
                     <input type="submit" name="formsend" id="formsend" value="Envoyer"><br/>
 
             </form>
@@ -34,22 +34,21 @@
         		if(isset($_POST['formsend'])){
             		extract($_POST);
 
-            		if(!empty($new_password) && !empty($newc_password)){
+            		if(!empty($new_email) && !empty($newc_email)){
 
-                		if($new_password == $newc_password){
+                		if($new_email == $newc_email){
                 			include 'database.php';
     						global $db;
     						$options = [
                         		'cost' => 12,
                     		];
 
-                    		$hashpass = password_hash($new_password, PASSWORD_BCRYPT, $options);
-                			$q= $db->prepare("UPDATE users SET password = :password WHERE pseudo = '$pseudo' ");
+                			$q= $db->prepare("UPDATE users SET email = :email WHERE pseudo = '$pseudo' ");
                         	$q->execute([
-                            'password'=> $hashpass
+                            'email'=> $new_email
                         	]);
                         	
-                        	echo "<font style=\"font family: courrier new;\"><strong>Le mdp a été changé merci de vous reconnecter</strong></font>";
+                        	echo "<font style=\"font family: courrier new;\"><strong>L'email' a été changé merci de vous reconnecter</strong></font>";
 
                 }else{
                     echo "<font style=\"font family: courrier new;\"><strong>Les mot de passes ne correspondent pas</strong></font>";
@@ -61,35 +60,5 @@
         }
         ?>
     </div>
-    </body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        </div>
-
     </body>
 </html>
