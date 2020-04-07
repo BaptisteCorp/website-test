@@ -39,7 +39,7 @@
                 			include 'database.php';
     						global $db;
 
-                			$q= $db->prepare("UPDATE users SET password = :password WHERE pseudo = $pseudo ");
+                			$q= $db->prepare("UPDATE users SET password = :password WHERE pseudo = '$pseudo' ");
                         	$q->execute([
                             'password'=> $new_password
                         	]);
