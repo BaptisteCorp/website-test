@@ -13,21 +13,28 @@
         <title>Homepage</title>
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="css/main.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/dashboard.css"/>
     </head>
 
     <!-- Actions de navigation -->
     <nav>
-        <h1>Bonjour <?php echo $pseudo; ?></h1>
-        <input type='text' placeholder='Rechercher'>
-        <div id='icoParam'>
-            <a href="parametres.php" class='param'><img src="images/parametre.png" class='ico'/></a>
-            <a href="deconnexion.php"class='param'><img src="images/logout.png" class='ico'/></a>
+        <div id="monicone">
+            <img src=/images/cloud.png title='icone' id='icone'>
+        </div>
+        <div id='nav'>
+            
+            <input type='text' placeholder='Rechercher'>
+            <h1>Bonjour <?php echo $pseudo; ?></h1>
+            <div id='icoParam'>
+                <a href="parametres.php" class='param'><img src="images/parametre.png" class='ico'/></a>
+                <a href="deconnexion.php"class='param'><img src="images/logout.png" class='ico'/></a>
+            </div>
         </div>
     </nav>
     <body>
+        
         <div class="sidenav">
-            <img src=/images/cloud.png title='icone' id='icone'>
             <button disabled><img src="images/plus.png" id='plus'/> Nouveau</button>
             <button disabled>Mon Cloud</button>
             <button disabled>Partagé</button>
@@ -38,7 +45,7 @@
             
             
             <div id="dossiers">
-                <h2>Ici sont stockés les dossiers</h2>
+                <h2>Dossiers</h2>
                 <?php
                     $dossiers=explode("$current_dir/",shell_exec("ls -d $current_dir/*/"));
                     $nb_dossiers= count( $dossiers );
@@ -53,7 +60,7 @@
                 <output aria-live="polite"></output>
             </div>
             <div id="fichiers">
-                <h2>Ici sont stockés les fichiers </h2>
+                <h2>Fichiers</h2>
                 <?php
                     $fichiers=explode("\n",shell_exec("ls -F $current_dir| grep -v '/$'"));
                     $nb_fichiers= count( $fichiers );

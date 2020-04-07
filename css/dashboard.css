@@ -1,4 +1,11 @@
 
+#monicone{
+    float: left;
+    width: 80px;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 10px;
+}
 .fileIcone:hover,.dirIcone:hover{
     width: 70px;}
 
@@ -27,23 +34,25 @@ a,#dossiers,#fichiers{
     margin-top: 25px;
     text-align: center;
 }
-nav{
+#nav{
     font-size: 20px;
     padding: 10px;
-    border-bottom: solid;
-    border-radius: 0;
+    border-bottom: none;
+    border-radius: 20px;
 }
 
-nav a{
+#nav a{
     padding: 5px;
     text-align: center;
 }
+
 nav h1{
-    float: left;
-    margin-top: 12px;
+    margin-left: 200px;
     margin-right: 15px;
+    display: inline;
 }
 nav input{
+    float: left;
     height: 30px;
     width: 200px;
     margin-top: 12px;
@@ -64,16 +73,20 @@ nav input{
 
 /* The sidebar menu */
 .sidenav {
-  height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 120px; /* Set the width of the sidebar */
+  height: 95%; /* Full-height: remove this if you want "auto" height */
+  width: 75px; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
-  left: 0;
-  background-color:white;
+  top: 1; /* Stay at the top */
+  left: 10px;
+
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 20px;
-  border-right: solid;
+  border-right: none;
+  border-width: 1px;
+  border-radius: 20px;
+
+  background-color: rgb(136, 212, 170);
 }
 
 /* The navigation menu links */
@@ -85,16 +98,20 @@ nav input{
   display: block;
   margin-bottom: 12px;
   margin-left: 5px;
+  width: 115px;
 }
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
   color: #f1f1f1;
 }
+.sidenav:hover{
+    width:200px;
+}
 
 /* Style page content */
 #stockage {
-  margin-left: 120px; /* Same as the width of the sidebar */
+  margin-left: 75px; /* Same as the width of the sidebar */
   padding: 0px 10px;
 }
 
