@@ -1,0 +1,39 @@
+
+.fileIcone:hover,.dirIcone:hover{
+    width: 70px;}
+
+a,#dossiers,#fichiers{
+    text-align: center;
+    margin:10px;
+}
+
+.fileIcone,.dirIcone{
+    width: 50px;
+    float:inherit;
+}
+#fileButton,#dirButton{
+    margin:5px;
+    margin-left: 15px;
+    
+    font-size: 20px;
+    display: inline;
+    
+    
+}
+#fichiers{
+    margin-top: 25px;
+}
+#paraButton{
+    margin-top: 25px;
+    text-align: center;
+}
+nav{
+    font-size: 20px;
+    padding: 10px;
+}
+
+nav a{
+    padding: 5px;
+}
+
+
