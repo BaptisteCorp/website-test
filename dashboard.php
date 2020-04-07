@@ -18,14 +18,24 @@
 
     <!-- Actions de navigation -->
     <nav>
-        <img src=/images/cloud.png title='icone' id='icone'>
-        <a href="parametres.php">Paramètres</a>
-        <a href="deconnexion.php">Déconnexion</a>
+        <h1>Bonjour <?php echo $pseudo; ?></h1>
+        <input type='text' placeholder='Rechercher'>
+        <div id='icoParam'>
+            <a href="parametres.php" class='param'><img src="images/parametre.png" class='ico'/></a>
+            <a href="deconnexion.php"class='param'><img src="images/logout.png" class='ico'/></a>
+        </div>
     </nav>
     <body>
+        <div class="sidenav">
+            <img src=/images/cloud.png title='icone' id='icone'>
+            <button disabled><img src="images/plus.png" id='plus'/> Nouveau</button>
+            <button disabled>Mon Cloud</button>
+            <button disabled>Partagé</button>
+            <button disabled>Important</button>
+        </div>
         <!-- Affichage  fichiers et dossiers -->
         <div id="stockage">
-            <h1>Bienvenue <?php echo $pseudo; ?></h1>
+            
             
             <div id="dossiers">
                 <h2>Ici sont stockés les dossiers</h2>

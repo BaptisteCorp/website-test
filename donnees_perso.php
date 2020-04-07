@@ -17,11 +17,9 @@
         <title>Paramètres</title>
         <link rel='stylesheet' href='css/main.css'>
         <link rel='stylesheet' href='css/index.css'>
-    </head>
-    <nav>
-        <img src=/images/cloud.png title='icone' id='icone'>
-    </nav>
+    </head>  
     <body>
+        <img src=/images/cloud.png title='icone' id='icone'>
         <div id="wrapper">
             <a href=parametres.php class='retour'>Retour</a>
             <h1>Voici les données :</h1>

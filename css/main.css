@@ -16,17 +16,21 @@ html {
 }
 
 nav{
-    background: initial;
-    width:100%;
+    height: 50px;
+    background: white;
+    width:auto;
     border-radius: 10px;
     text-align: right;
-    margin-left: -20px;}
-    
+    margin-top: 0px;
+    margin-left: 110px;
+    text-align: left;
+}
+
+  
 #icone{
     width:50px;
-    text-align: right;
-    display: block;
-    margin-left: 50px;
+    margin-left: 25px;
+    margin-bottom: 50px;
 
 }
 
