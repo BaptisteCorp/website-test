@@ -16,7 +16,7 @@ html {
     
 }
 
-<<<<<<< HEAD
+
 #nav{
     height: 50px;
     background: rgb(136, 212, 170);
@@ -37,20 +37,9 @@ html {
     z-index: 1 ;
     top:0;
     left:0;
-=======
-nav{
-    background: initial;
-    width:100%;
-    border-radius: 10px;
-    text-align: right;
-    margin-left: -20px;}
+
+
     
-#icone{
-    width:50px;
-    text-align: right;
-    display: block;
-    margin-left: 50px;
->>>>>>> cb799886c7a118337e5c7c71b43ad69cc9f76d62
 
 }
 
