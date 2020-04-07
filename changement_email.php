@@ -22,8 +22,8 @@
         <div id="wrapper">
             <a href=dashboard.php class='retour'>Retour accueil</a>
             <form method="post">
-                    <input type="password" name="new_password" id="new_password" placeholder="Votre Nouvel email"><br/>
-                    <input type="password" name="newc_password" id="newc_password" placeholder="Confirmer Votre Nouvel email"><br/>
+                    <input type="email" name="new_email" id="new_email" placeholder="Votre Email"><br/>
+                    <input type="email" name="newc_email" id="newc_email" placeholder="Votre nouvel Email"><br/>
                     <input type="submit" name="formsend" id="formsend" value="Envoyer"><br/>
 
             </form>
