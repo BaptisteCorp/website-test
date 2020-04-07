@@ -33,7 +33,9 @@
                 Mot de passe = <?php echo $password ?>
             </p>
             <button disabled>Changer Pseudo</button><br/>
-            <button onclick="window.location.href = 'serviel.ddns.net:7000/changement_mdp.php';">Changer de mot de passe</button>
+            <form action="serviel.ddns.net:7000/changement_mdp.php" method="get" target="_blank">
+            <button type="submit">Changer de mdp</button>
+            </form>
             <button disabled>Changer email</button>
             
         </div>
