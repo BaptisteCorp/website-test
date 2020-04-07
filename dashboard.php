@@ -94,8 +94,9 @@
 
         <!-- Boite de dialogue actions dossiers -->
         <dialog id="actionDirDialog">
-                <button type="button" id="renameFile">Renomer</button>
-                <button type="button" id="suppFile">Supprimer</button>
+                <h1 id="nom_dir"></h1>
+                <button type="button" id="renameDir">Renomer</button>
+                <button type="button" id="suppDir">Supprimer</button>
                 <button value="cancel" id="cancelDirButton">Annuler</button>
         </dialog>
 
@@ -104,6 +105,7 @@
             var actionFileDialog= document.getElementById('actionFileDialog');
             var cancelFileButton= document.getElementById('cancelFileButton');
             const dirUser = document.getElementById('fileDownloader').href;
+            var suppFile = document.getElementById('suppFile');
 
 
             for (var i in nb_files){
@@ -123,14 +125,66 @@
                             window.alert("L'API dialog n'est pas prise en charge par votre navigateur");
                         }
                     });
-                })(nb_files[i]);
-
-                (function (arg1){
+                
                     cancelFileButton.addEventListener('click', function() {
                         document.getElementById('fileDownloader').href=dirUser;
                         actionFileDialog.close('Annulé');   
                     });
+
+                    suppFile.addEventListener('click',function(){
+                        const xhttp = new XMLHttpRequest();
+                        const destination='suppFile.php?suppFile='+arg1;
+    
+                        xhttp.open("GET",destination);
+                        xhttp.send();
+                    });
                 })(nb_files[i]);
+            }
+        </script>
+        <script type= "text/javascript">
+            var nb_dossiers = <?php echo json_encode($dossiers); ?>;
+            var actionDirDialog= document.getElementById('actionDirDialog');
+            var cancelDirButton = document.getElementById('cancelDirButton');
+            //const dirUser = document.getElementById('fileDownloader').href;
+            var suppDir = document.getElementById('suppDir');
+
+
+            for (var i in nb_dossiers){
+                if (i==0){
+                    continue
+                }
+                var dirIcon = document.getElementsByClassName('actionDirButton')[i-1];
+
+                (function (arg1){
+                    dirIcon.addEventListener('click', function onOpen() {
+                        document.getElementById('nom_dir').innerHTML=arg1
+                        if (typeof actionDirDialog.showModal === "function") {
+                            actionDirDialog.showModal();
+                        } else {
+                            window.alert("L'API dialog n'est pas prise en charge par votre navigateur");
+                        }
+                    });
+
+                    cancelDirButton.addEventListener('click', function() {
+                        actionDirDialog.close('Annulé');   
+                    });
+
+                    dirIcon.addEventListener('dblclick',function(){
+                        const xhttp = new XMLHttpRequest();
+                        const destination='changement_dir.php?nom_dossier='+arg1;
+    
+                        xhttp.open("GET",destination);
+                        xhttp.send();
+                    });
+
+                    suppDir.addEventListener('click',function(){
+                        const xhttp = new XMLHttpRequest();
+                        const destination='suppDir.php?suppDir='+arg1;
+    
+                        xhttp.open("GET",destination);
+                        xhttp.send();
+                    });
+                })(nb_dossiers[i]);
             }
         </script>
         <script type="text/javascript" src="js/dashboard.js"></script>

@@ -53,20 +53,3 @@ envoiFile.addEventListener('click', function() {
 })
 
 
-var dirIcon = document.getElementsByClassName('actionDirButton')[0];
-var actionDirDialog= document.getElementById('actionDirDialog');
-var cancerDirButton = document.getElementById('cancelDirButton');
-
-
-dirIcon.addEventListener('click', function onOpen() {
-  if (typeof actionDirDialog.showModal === "function") {
-    actionDirDialog.showModal();
-  } else {
-    window.alert("L'API dialog n'est pas prise en charge par votre navigateur");
-  }
-});
-
-cancelDirButton.addEventListener('click', function() {
-  actionDirDialog.close('Annulé');
-});
-
