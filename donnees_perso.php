@@ -1,6 +1,8 @@
 <?php session_start(); //ouverture de la session
     //Récuperation du pseudo
     $pseudo=$_SESSION["pseudo"];
+    include 'database.php';
+    global $db;
     $email=$_SESSION["lemail"];
     $password=$_SESSION["lpassword"];
     if ($pseudo==""){
@@ -17,9 +19,11 @@
         <title>Paramètres</title>
         <link rel='stylesheet' href='css/main.css'>
         <link rel='stylesheet' href='css/index.css'>
-    </head>  
-    <body>
+    </head>
+    <nav>
         <img src=/images/cloud.png title='icone' id='icone'>
+    </nav>
+    <body>
         <div id="wrapper">
             <a href=parametres.php class='retour'>Retour</a>
             <h1>Voici les données :</h1>
@@ -29,7 +33,7 @@
                 Mot de passe = <?php echo $password ?>
             </p>
             <button disabled>Changer Pseudo</button><br/>
-            <button disabled>Changer mot de passe</button>
+            <button onclick="window.location.href = 'serviel.ddns.net:7000/changement_mdp.php';">Changer de mot de passe</button>
             <button disabled>Changer email</button>
             
         </div>
