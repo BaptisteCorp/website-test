@@ -57,7 +57,7 @@
                         
                     <?php }?>
                 <button id="dirButton">Créer un dossier</button>
-                <!--<output aria-live="polite"></output>-->
+                <output aria-live="polite"></output>
             </div>
             <div id="fichiers">
                 <h2>Fichiers</h2>

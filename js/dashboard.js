@@ -1,7 +1,7 @@
 // Boite de dialogue create dir
 var updateButton = document.getElementById('dirButton');
 var dirDialog = document.getElementById('dirDialog');
-//var outputBox = document.getElementsByTagName('output')[0];
+var outputBox = document.getElementsByTagName('output')[0];
 var selectEl = document.getElementById('select');
 var confirmBtn = document.getElementById('confirmBtn');
 // Le bouton "mettre à jour les détails" ouvre la boîte de dialogue

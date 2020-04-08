@@ -18,23 +18,22 @@
         <link rel='stylesheet' href='css/index.css'>
         <link rel='stylesheet' href='css/param.css'>
     </head>
-    
     <body>
         <img src=/images/cloud.png title='icone' id='icone'>
         <div id="wrapper">
-            <a href=dashboard.php class='retour'>Retour accueil</a>
-            <a href="donnees_perso.php" class='retour'>Données personnelles</a>
-            <button  id="suppButton">Supprimer compte</button>
-            <a href="infos_stockage.php">Infos stockage</a>
+            <a href="parametres.php">Retour</a>
+            <h1>Voici ce que vous utilisez</h1>
+            <p><?php echo explode('users',shell_exec("du -sh users/$pseudo"))[0]?>/1Go</p>
+            <div class="GaugeMeter" id="GaugeMeter_1" data-percent="10"></div>
             
         </div>
-
-        <dialog id="suppDialog">
-            <h1>Attention, la suppression du compte efface vos données stockées dans le cloud. Voulez-vous continuer ?</h1>
-            <a href="suppCompte.php">Oui</a>
-            <button id="cancel">Non</button>
-        </dialog>
-        <script type="text/javascript" src="/js/parametres.js"></script>
+        <script src="js/jquery-3.4.1.min.js"></script>
         <script type="text/javascript" src="/js/main.js"></script>
+        <script src="js/GaugeMeter.js"></script>
+        <script>
+        $(document).ready(function(){
+            $(".GaugeMeter").gaugeMeter();
+        });
+        </script>
     </body>
 </html>
