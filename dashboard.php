@@ -57,7 +57,7 @@
                         
                     <?php }?>
                 <button id="dirButton">Créer un dossier</button>
-                <output aria-live="polite"></output>
+                <!--<output aria-live="polite"></output>-->
             </div>
             <div id="fichiers">
                 <h2>Fichiers</h2>
@@ -105,7 +105,7 @@
                 <h1 id="nom_file"></h1>
                 <a href="<?php echo $current_dir ?>/" Download id="fileDownloader">Télécharger</a>
                 <button type="button" id="renameFile">Renommer</button>
-                <button type="button" id="suppFile" disabled>Supprimer</button>
+                <button type="button" id="suppFile" >Supprimer</button>
                 <button value="cancel" id="cancelFileButton">Annuler</button>
         </dialog>
 
@@ -113,7 +113,7 @@
         <dialog id="actionDirDialog">
                 <h1 id="nom_dir"></h1>
                 <button type="button" id="renameDir">Renomer</button>
-                <button type="button" id="suppDir" disabled>Supprimer</button>
+                <button type="button" id="suppDir" >Supprimer</button>
                 <button value="cancel" id="cancelDirButton">Annuler</button>
         </dialog>
 
@@ -123,6 +123,7 @@
             var cancelFileButton= document.getElementById('cancelFileButton');
             const dirUser = document.getElementById('fileDownloader').href;
             var suppFile = document.getElementById('suppFile');
+            var fileSelected = '';
 
 
             for (var i in nb_files){
@@ -137,6 +138,8 @@
                         if (typeof actionFileDialog.showModal === "function") {
                             actionFileDialog.showModal();
                             document.getElementById('fileDownloader').href+=arg1;
+                            fileSelected+=arg1;
+                            
                             
                         } else {
                             window.alert("L'API dialog n'est pas prise en charge par votre navigateur");
@@ -145,15 +148,19 @@
                 
                     cancelFileButton.addEventListener('click', function() {
                         document.getElementById('fileDownloader').href=dirUser;
-                        actionFileDialog.close('Annulé');   
+                        actionFileDialog.close('Annulé');
+                        fileSelected='';   
                     });
 
                     suppFile.addEventListener('click',function(){
+                        if (fileSelected!=''){
                         const xhttp = new XMLHttpRequest();
-                        const destination='suppFile.php?suppFile='+arg1;
+                        const destination='suppFile.php?suppFile='+fileSelected;
     
                         xhttp.open("GET",destination);
                         xhttp.send();
+                        fileSelected='';}
+                        document.location.href="dashboard.php"; 
                     });
                 })(nb_files[i]);
             }
@@ -164,6 +171,7 @@
             var cancelDirButton = document.getElementById('cancelDirButton');
             //const dirUser = document.getElementById('fileDownloader').href;
             var suppDir = document.getElementById('suppDir');
+            var dirSelected = '';
 
 
             for (var i in nb_dossiers){
@@ -177,29 +185,36 @@
                         document.getElementById('nom_dir').innerHTML=arg1
                         if (typeof actionDirDialog.showModal === "function") {
                             actionDirDialog.showModal();
+                            dirSelected+=arg1;
                         } else {
                             window.alert("L'API dialog n'est pas prise en charge par votre navigateur");
                         }
                     });
 
                     cancelDirButton.addEventListener('click', function() {
-                        actionDirDialog.close('Annulé');   
+                        actionDirDialog.close('Annulé'); 
+                        dirSelected='';  
                     });
 
                     dirIcon.addEventListener('dblclick',function(){
+                        
                         const xhttp = new XMLHttpRequest();
                         const destination='changement_dir.php?nom_dossier='+arg1;
     
                         xhttp.open("GET",destination);
                         xhttp.send();
+                       
                     });
 
                     suppDir.addEventListener('click',function(){
+                        if (dirSelected!=''){
                         const xhttp = new XMLHttpRequest();
-                        const destination='suppDir.php?suppDir='+arg1;
+                        const destination='suppDir.php?suppDir='+dirSelected;
     
                         xhttp.open("GET",destination);
                         xhttp.send();
+                        dirSelected='';}
+                        document.location.href="dashboard.php"; 
                     });
                 })(nb_dossiers[i]);
             }

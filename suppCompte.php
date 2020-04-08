@@ -6,6 +6,9 @@
     }
     //Récuperation du dossier usilisateur correspondant au pseudo
     $current_dir="users/$pseudo";
+    shell_exec("rm -dr $current_dir/");
+    session_unset();
+    session_destroy();
 ?> 
 
 <!DOCTYPE html>
@@ -18,22 +21,13 @@
         <link rel='stylesheet' href='css/index.css'>
         <link rel='stylesheet' href='css/param.css'>
     </head>
-    
     <body>
         
         <div id="wrapper">
-            <a href=dashboard.php class='retour'>Retour accueil</a>
-            <a href="donnees_perso.php" class='retour'>Données personnelles</a>
-            <button  id="suppButton">Supprimer compte</button>
-            <button >Infos stockage</button>
+            <h1>Votre compte a bien été supprimé</h1>
+            <a href="index.php">Retour accueil</a>
             
         </div>
-
-        <dialog id="suppDialog">
-            <h1>Attention, la suppression du compte efface vos données stockées dans le cloud. Voulez-vous continuer ?</h1>
-            <a href="suppCompte.php">Oui</a>
-            <button id="cancel">Non</button>
-        </dialog>
         <script type="text/javascript" src="/js/parametres.js"></script>
         <script type="text/javascript" src="/js/main.js"></script>
     </body>

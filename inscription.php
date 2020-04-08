@@ -7,8 +7,13 @@
         <title>Inscription</title>
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="css/main.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+        <link rel='stylesheet' href='css/index.css'>
+        <link rel='stylesheet' href='css/param.css'>
     </head>
-
+    <nav>
+        <img src=/images/cloud.png title='icone' id='icone'>
+    </nav>
     <body>
         <div id="wrapper">
             
@@ -16,7 +21,7 @@
                     <input type="pseudo" name="pseudo" id="pseudo" placeholder="Votre Pseudo"><br/>
                     <input type="email" name="semail" id="semail" placeholder="Votre Email"><br/>
                     <input type="password" name="password" id="password" placeholder="Votre  Mot de Passe"><br/>
-                    <input type="password" name="cpassword" id="cpassword" placeholder="Confirmer Votre Mot de Passe"><br/>
+                    <input type="password" name="cpassword" id="cpassword" placeholder="Confirmer le Mot de Passe"><br/>
                     <input type="submit" name="formsend" id="formsend" value="Envoyer"><br/>
 
             </form>

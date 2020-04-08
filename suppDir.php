@@ -1,5 +1,7 @@
 <?php
     session_start(); //ouverture de la session
     $suppDir=$_GET['suppDir'];
-    shell_exec( "rm -dr $suppDir");
+    $pseudo=$_SESSION["pseudo"];
+    $current_dir="users/$pseudo";
+    shell_exec( "rm -dr $current_dir/$suppDir");
 ?>
