@@ -36,9 +36,9 @@
         
         <div class="sidenav">
             <button disabled><img src="images/plus.png" id='plus'/> Nouveau</button>
-            <button disabled>Mon Cloud</button>
-            <button disabled>Partagé</button>
-            <button disabled>Important</button>
+            <button disabled><img src="images/myFiles.png" id='plus'/>Mon Cloud</button>
+            <button disabled><img src="images/share.png" id='plus'/>Partagé</button>
+            <button disabled><img src="images/important.png" id='plus'/>Important</button>
         </div>
         <!-- Affichage  fichiers et dossiers -->
         <div id="stockage">
@@ -78,9 +78,11 @@
                         <?php echo "$affiche"?></button>
                         
                     <?php }?>
-                
-                    <input type="file" name="files[]" multiple id="fileschosen"/>
-                    <button id="envoiFile">Envoyer</button>
+                    <form action="add_file.php" method="post" enctype="multipart/form-data">
+                        <input type="file" name="fileToUpload" id="fileToUpload"/>
+                        <input type="submit" value="Upload Image" name="submit"/>
+                    </form>
+                    
                 
                 <output aria-live="polite"><?php if ($_SESSION['fileUpload']){echo "Fichiers importés";
                                                 $_SESSION['fileUpload']=False;}?></output>

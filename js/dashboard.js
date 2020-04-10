@@ -30,6 +30,7 @@ dirDialog.addEventListener('close', function onClose() {
 });
 
 // Upload file
+/*
 var fileButton = document.getElementById('fileButton');
 var fileDialog = document.getElementById('fileDialog');
 var outputBoxfile = document.getElementsByTagName('output')[0];
@@ -52,4 +53,4 @@ envoiFile.addEventListener('click', function() {
   }).then(response => { console.log(response) })
   document.location.href="dashboard.php"; 
 })
-
+*/
