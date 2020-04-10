@@ -1,7 +1,6 @@
 <?php
     session_start(); //ouverture de la session
     $suppDir=$_GET['suppDir'];
-    $pseudo=$_SESSION["pseudo"];
-    $current_dir="users/$pseudo";
+    $current_dir=$_SESSION['currentDir'];
     shell_exec( "rm -dr $current_dir/$suppDir");
 ?>

@@ -76,6 +76,7 @@
                             $_SESSION["lemail"]=$result['email'];
                             $_SESSION["lpassword"]=$result['password'];
                             $_SESSION['fileUpload']=False;
+                            $_SESSION['currentDir']="users/".$result['pseudo'].'/';
                             header('Location: dashboard.php');
                             exit();
                         }else{

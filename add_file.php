@@ -1,7 +1,6 @@
 <?php 
 session_start(); //ouverture de la session
-$pseudo=$_SESSION["pseudo"];
-$target_dir = "users/$pseudo/";
+$target_dir = $_SESSION['currentDir'];
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));

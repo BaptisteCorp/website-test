@@ -5,7 +5,7 @@
         header('Location: index.php');
     }
     //Récuperation du dossier usilisateur correspondant au pseudo
-    $current_dir="users/$pseudo";
+    $current_dir=$_SESSION['currentDir'];
 ?> 
 <!DOCTYPE html>
 <html>
@@ -45,6 +45,7 @@
             
             
             <div id="dossiers">
+                <h5><?php echo $current_dir;?>
                 <h2>Dossiers</h2>
                 <?php
                     $dossiers=explode("$current_dir/",shell_exec("ls -d $current_dir/*/"));
@@ -135,7 +136,7 @@
                 var fileIcon = document.getElementsByClassName('actionFileButton')[i];
 
                 (function (arg1){
-                    fileIcon.addEventListener('click', function onOpen() {
+                    fileIcon.addEventListener('contextmenu', function onOpen(e) {
                         document.getElementById('nom_file').innerHTML=arg1
                         if (typeof actionFileDialog.showModal === "function") {
                             actionFileDialog.showModal();
@@ -146,6 +147,7 @@
                         } else {
                             window.alert("L'API dialog n'est pas prise en charge par votre navigateur");
                         }
+                        e.preventDefault();
                     });
                 
                     cancelFileButton.addEventListener('click', function() {
@@ -183,14 +185,16 @@
                 var dirIcon = document.getElementsByClassName('actionDirButton')[i-1];
 
                 (function (arg1){
-                    dirIcon.addEventListener('click', function onOpen() {
+                    dirIcon.addEventListener('contextmenu', function onOpen(e) {
                         document.getElementById('nom_dir').innerHTML=arg1
                         if (typeof actionDirDialog.showModal === "function") {
                             actionDirDialog.showModal();
                             dirSelected+=arg1;
+                            
                         } else {
                             window.alert("L'API dialog n'est pas prise en charge par votre navigateur");
                         }
+                        e.preventDefault();
                     });
 
                     cancelDirButton.addEventListener('click', function() {
@@ -205,6 +209,7 @@
     
                         xhttp.open("GET",destination);
                         xhttp.send();
+                        document.location.href="dashboard.php";
                        
                     });
 
