@@ -30,27 +30,26 @@ dirDialog.addEventListener('close', function onClose() {
 });
 
 // Upload file
-/*
 var fileButton = document.getElementById('fileButton');
 var fileDialog = document.getElementById('fileDialog');
-var outputBoxfile = document.getElementsByTagName('output')[0];
-var envoiFile=document.getElementById('envoiFile');
-const url = 'add_file.php';
+var cancelfileDialog = document.getElementById('cancelfileDialog');
 
-envoiFile.addEventListener('click', function() {
-  const files = document.querySelector('[type=file]').files;
-  const formData = new FormData();
-
-  for (let i = 0; i < files.length; i++) {
-    let file = files[i];
-
-    formData.append('files[]', file);
+fileButton.addEventListener('click', function onOpen() {
+  if (typeof dirDialog.showModal === "function") {
+    fileDialog.showModal();
+  } else {
+    window.alert("L'API dialog n'est pas prise en charge par votre navigateur");
   }
+});
 
-  fetch(url, {
-    method: 'POST',
-    body: formData,
-  }).then(response => { console.log(response) })
-  document.location.href="dashboard.php"; 
+cancelfileDialog.addEventListener('click',function(){
+  fileDialog.close();
 })
-*/
+
+
+//Afficher le sous-menu nouveau
+$(function(){
+  $('#nouveauBtn').on('click touch', function(e){
+      $('#nouveau').slideToggle();
+  });
+});

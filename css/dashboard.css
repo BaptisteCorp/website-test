@@ -130,3 +130,17 @@ a,#dossiers,#fichiers{
     width: 40px;
     margin-right: 15px;
 }
+
+.sidenav ul button{
+    background-color: white;
+    width: 200px;
+}
+
+#nouveau{
+    display: none;
+    list-style:none;
+}
+
+#returnBtn{
+    border-style: none;
+}

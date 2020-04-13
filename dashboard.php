@@ -35,7 +35,11 @@
     <body>
         
         <div class="sidenav">
-            <button disabled><img src="images/plus.png" id='plus'/> Nouveau</button>
+            <button id='nouveauBtn'><img src="images/plus.png" id='plus'/> Nouveau</button>
+            <ul id="nouveau">
+                <li><button id="dirButton">Créer un dossier</button></li>
+                <li><button id="fileButton">Importer un fichier</button></li>
+            </ul>
             <button disabled><img src="images/myFiles.png" id='plus'/>Mon Cloud</button>
             <button disabled><img src="images/share.png" id='plus'/>Partagé</button>
             <button disabled><img src="images/important.png" id='plus'/>Important</button>
@@ -45,7 +49,8 @@
             
             
             <div id="dossiers">
-                <h5><?php echo $current_dir;?>
+                <h5><?php echo $current_dir;?></h5>
+                <a href='return.php' id='returnBtn'><img src="images/retour.png" class="dirIcone"/></a>
                 <h2>Dossiers</h2>
                 <?php
                     $dossiers=explode("$current_dir/",shell_exec("ls -d $current_dir/*/"));
@@ -57,7 +62,6 @@
                         <?php echo "$dossiers[$i]"?></button>
                         
                     <?php }?>
-                <button id="dirButton">Créer un dossier</button>
                 <output aria-live="polite"></output>
             </div>
             <div id="fichiers">
@@ -79,10 +83,6 @@
                         <?php echo "$affiche"?></button>
                         
                     <?php }?>
-                    <form action="add_file.php" method="post" enctype="multipart/form-data">
-                        <input type="file" name="fileToUpload" id="fileToUpload"/>
-                        <input type="submit" value="Upload Image" name="submit"/>
-                    </form>
                     
                 
                 <output aria-live="polite"><?php if ($_SESSION['fileUpload']){echo "Fichiers importés";
@@ -103,6 +103,14 @@
             </form>
         </dialog>
 
+        <dialog id="fileDialog">
+            <form action="add_file.php" method="post" enctype="multipart/form-data">
+                <input type="file" name="fileToUpload" id="fileToUpload"/>
+                <input type="submit" value="Upload Image" name="submit"/>
+            </form>
+            <button id="cancelfileDialog">Cancel</button>
+        </dialog>
+
         <!-- Boite de dialogue actions files -->
         <dialog id="actionFileDialog">
                 <h1 id="nom_file"></h1>
@@ -120,6 +128,7 @@
                 <button value="cancel" id="cancelDirButton">Annuler</button>
         </dialog>
 
+        <script src="js/jquery-3.4.1.min.js"></script>
         <script type= "text/javascript">
             var nb_files = <?php echo json_encode($fichiers); ?>;
             var actionFileDialog= document.getElementById('actionFileDialog');
