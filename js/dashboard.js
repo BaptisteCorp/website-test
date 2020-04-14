@@ -53,3 +53,36 @@ $(function(){
       $('#nouveau').slideToggle();
   });
 });
+
+var actionDirButton = document.getElementsByClassName('actionDirButton')
+for (var i=0;i<actionDirButton.length;i++){
+  actionDirButton[i].addEventListener('drop', function(e) {
+    e.preventDefault(); // Annule l'interdiction de drop
+    alert('Fonction non disponible');
+  });
+  actionDirButton[i].addEventListener('dragover', function(e) {
+    e.preventDefault(); // Annule l'interdiction de drop
+    
+  });
+}
+
+var dropZone = document.getElementById('dropper');
+
+dropper.addEventListener('dragover', function(e) {
+  e.preventDefault(); // Annule l'interdiction de "drop"
+}, false);
+
+dropZone.addEventListener('drop', function(e) {
+  e.preventDefault();
+
+  var files = e.dataTransfer.files,
+      filesLen = files.length,
+      filenames = "";
+
+  for (var i = 0 ; i < filesLen ; i++) {
+      filenames += '\n' + files[i].name;
+  }
+
+  alert(files.length + ' fichier(s) :\n' + filenames);
+});
+

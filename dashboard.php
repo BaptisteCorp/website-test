@@ -78,7 +78,7 @@
                         }
                 ?>
                         
-                        <button class='actionFileButton' type='button'><img src="images/fichier.png" title='<?php echo "$affiche"?>' alt= '<?php echo "$affiche"?>' class="fileIcone"/>
+                        <button class='actionFileButton' type='button' draggable="true"><img draggable="false" src="images/fichier.png" title='<?php echo "$affiche"?>' alt= '<?php echo "$affiche"?>' class="fileIcone"/>
                         <br/>
                         <?php echo "$affiche"?></button>
                         
@@ -105,6 +105,7 @@
 
         <dialog id="fileDialog">
             <form action="add_file.php" method="post" enctype="multipart/form-data">
+                <div id="dropper">Déposez votre fichier</div>
                 <input type="file" name="fileToUpload" id="fileToUpload"/>
                 <input type="submit" value="Upload Image" name="submit"/>
             </form>

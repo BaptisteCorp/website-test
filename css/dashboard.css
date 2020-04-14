@@ -144,3 +144,10 @@ a,#dossiers,#fichiers{
 #returnBtn{
     border-style: none;
 }
+
+#dropper{
+    background-color: white;
+    height: 100px;
+    text-align: center;
+    padding-top: 70px;
+}
