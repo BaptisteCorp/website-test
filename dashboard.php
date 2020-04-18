@@ -6,6 +6,11 @@
     }
     //Récuperation du dossier usilisateur correspondant au pseudo
     $current_dir=$_SESSION['currentDir'];
+    $oui=explode('/',$current_dir);
+    $affiche ='';
+    for ($i=1;$i<count($oui)-1;$i++){
+    $affiche.= $oui[$i].'/';
+    }
 ?> 
 <!DOCTYPE html>
 <html>
@@ -49,7 +54,7 @@
             
             
             <div id="dossiers">
-                <h5><?php echo $current_dir;?></h5>
+                <h5><?php echo $affiche;?></h5>
                 <a href='return.php' id='returnBtn'><img src="images/retour.png" class="dirIcone"/></a>
                 <h2>Dossiers</h2>
                 <?php
@@ -94,6 +99,7 @@
 
         <!-- Boite de dialogue création dossier -->
         <dialog id="dirDialog">
+            <h1>Attention ! Il ne doit pas y avoir d'espaces</h1>
             <form method="dialog">
                 <input type='text' name='nom_fichier' id="select"/>
                 <menu>
@@ -104,6 +110,7 @@
         </dialog>
 
         <dialog id="fileDialog">
+            <h1>Attention ! Il ne doit pas y avoir d'espaces</h1>
             <form action="add_file.php" method="post" enctype="multipart/form-data">
                 <div id="dropper">Déposez votre fichier</div>
                 <input type="file" name="fileToUpload" id="fileToUpload"/>
@@ -137,6 +144,7 @@
             const dirUser = document.getElementById('fileDownloader').href;
             var suppFile = document.getElementById('suppFile');
             var fileSelected = '';
+            var draggedElement;
 
 
             for (var i in nb_files){
@@ -176,6 +184,9 @@
                         fileSelected='';}
                         document.location.href="dashboard.php"; 
                     });
+                    fileIcon.addEventListener('dragstart',function(e){
+                        draggedElement = arg1;
+                    });
                 })(nb_files[i]);
             }
         </script>
@@ -186,6 +197,7 @@
             //const dirUser = document.getElementById('fileDownloader').href;
             var suppDir = document.getElementById('suppDir');
             var dirSelected = '';
+            
 
 
             for (var i in nb_dossiers){
@@ -232,6 +244,25 @@
                         xhttp.send();
                         dirSelected='';}
                         document.location.href="dashboard.php"; 
+                    });
+                    dirIcon.addEventListener('drop', function(e) {
+                        e.preventDefault(); // Annule l'interdiction de drop
+
+                        //alert('Fonction non disponible');
+                        console.log(arg1);
+                        console.log(draggedElement);
+                        const xhttp = new XMLHttpRequest();
+                        const destination='deplacement.php?dossier='+arg1+"&fichier="+draggedElement;
+                        
+                        xhttp.open("GET",destination);
+                        xhttp.send();
+                        
+                        document.location.href="dashboard.php"; 
+
+                    });
+                    dirIcon.addEventListener('dragover', function(e) {
+                        e.preventDefault(); // Annule l'interdiction de drop
+                        
                     });
                 })(nb_dossiers[i]);
             }

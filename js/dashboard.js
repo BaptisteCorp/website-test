@@ -54,18 +54,9 @@ $(function(){
   });
 });
 
-var actionDirButton = document.getElementsByClassName('actionDirButton')
-for (var i=0;i<actionDirButton.length;i++){
-  actionDirButton[i].addEventListener('drop', function(e) {
-    e.preventDefault(); // Annule l'interdiction de drop
-    alert('Fonction non disponible');
-  });
-  actionDirButton[i].addEventListener('dragover', function(e) {
-    e.preventDefault(); // Annule l'interdiction de drop
-    
-  });
-}
 
+
+//fonctoin drag&drop dialog upload
 var dropZone = document.getElementById('dropper');
 
 dropper.addEventListener('dragover', function(e) {
