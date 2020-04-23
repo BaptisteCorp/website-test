@@ -31,39 +31,45 @@
             extract($_POST);
 
             if(!empty($password) && !empty($cpassword) && !empty($semail)){
+                $antiXSSmail = stripos($semail, '<script>');
+                $antiXSSpseudo = stripos($pseudo, '<script>');
+                $antiXSSmdp = stripos($cpassword, '<script>');
+                if($antiXSSmail === false && $antiXSSpseudo === false && $antiXSSmdp === false) {
 
-                if($password == $cpassword){
+                    if($password == $cpassword){
 
-                    $options = [
-                        'cost' => 12,
-                    ];
+                        $options = [
+                            'cost' => 12,
+                        ];
 
-                    $hashpass = password_hash($password, PASSWORD_BCRYPT, $options);
-                    include 'database.php';
-                    global $db;
+                        $hashpass = password_hash($password, PASSWORD_BCRYPT, $options);
+                        include 'database.php';
+                        global $db;
 
-                    $c = $db->prepare("SELECT email FROM users WHERE email = :email"); //on prend dans la table users les emails
-                    $c->execute(['email' => $semail]);
+                        $c = $db->prepare("SELECT email FROM users WHERE email = :email"); //on prend dans la table users les emails
+                        $c->execute(['email' => $semail]);
 
-                    $result = $c->rowCount(); //comptage de nombre d'email à ce nom
-                    if($result == 0){
-                        $q= $db->prepare("INSERT INTO users(email,password,pseudo) VALUES(:email,:password,:pseudo)");
-                        $q->execute([
-                            'email'=> $semail,
-                            'password'=> $hashpass,
-                            'pseudo'=> $pseudo
-                        ]);
-                        shell_exec("mkdir users/$pseudo/");
-                        echo "<font style=\"font family: courrier new;\"><strong>Le compte a été crée</strong></font>";
-                        header('Location: index.php');
-                        }else{
-                            echo "<font style=\"font family: courrier new;\"><strong>Un Email identique existe déjà</strong></font>";
-                        }
+                        $result = $c->rowCount(); //comptage de nombre d'email à ce nom
+                        if($result == 0){
+                            $q= $db->prepare("INSERT INTO users(email,password,pseudo) VALUES(:email,:password,:pseudo)");
+                            $q->execute([
+                                'email'=> $semail,
+                                'password'=> $hashpass,
+                                'pseudo'=> $pseudo
+                            ]);
+                            shell_exec("mkdir users/$pseudo/");
+                            echo "<font style=\"font family: courrier new;\"><strong>Le compte a été crée</strong></font>";
+                            header('Location: index.php');
+                            }else{
+                                echo "<font style=\"font family: courrier new;\"><strong>Un Email identique existe déjà</strong></font>";
+                            }
 
+                    }else{
+                        echo "<font style=\"font family: courrier new;\"><strong>Les mot de passes ne correspondent pas</strong></font>";
+                    }
                 }else{
-                    echo "<font style=\"font family: courrier new;\"><strong>Les mot de passes ne correspondent pas</strong></font>";
+                    echo "<script>alert(\"Site protégé contre le XSS\")</script>";
                 }
-
             }else{
                 echo "<font style=\"font family: courrier new;\"><strong>Les champs ne sont pas tous remplis</strong></font>";
             }
