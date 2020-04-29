@@ -81,9 +81,24 @@
                         else{
                             $affiche=$fichiers[$i];
                         }
+                        $image="images/";
+                        $extention=explode(".",$fichiers[$i]);
+                        $extention=end($extention);
+                        if ( strcasecmp($extention,"png")==0 || strcasecmp($extention,"psd")==0 || strcasecmp($extention,"jpg")==0 || strcasecmp($extention,"jpeg")==0 || strcasecmp($extention,"gif")==0){
+                            $image.="img.png";
+                        }
+                        elseif(strcasecmp($extention,"avi")==0 || strcasecmp($extention,"mov")==0 || strcasecmp($extention,"mkv")==0 || strcasecmp($extention,"wmv")==0){
+                            $image.="video.png";
+                        }
+                        elseif(strcasecmp($extention,"mp3")==0 || strcasecmp($extention,"ogg")==0 || strcasecmp($extention,"flac")==0 || strcasecmp($extention,"wav")==0){
+                            $image.="music.png";
+                        }
+                        else{
+                            $image.="fichier.png";
+                        }
                 ?>
                         
-                        <button class='actionFileButton' type='button' draggable="true"><img draggable="false" src="images/fichier.png" title='<?php echo "$affiche"?>' alt= '<?php echo "$affiche"?>' class="fileIcone"/>
+                        <button class='actionFileButton' type='button' draggable="true"><img draggable="false" src=<?php echo $image?> title='<?php echo "$affiche"?>' alt= '<?php echo "$affiche"?>' class="fileIcone"/>
                         <br/>
                         <?php echo "$affiche"?></button>
                         
