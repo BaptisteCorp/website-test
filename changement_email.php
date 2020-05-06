@@ -43,13 +43,13 @@
     						global $db;
     						$options = [
                         		'cost' => 12,
-                    		];
-
-                			$q= $db->prepare("UPDATE users SET email = :email WHERE pseudo = '$pseudo' ");
+                            ];
+                            
+                            $q= $db->prepare("UPDATE users SET email = :email WHERE pseudo = '$pseudo' ");
                         	$q->execute([
                             'email'=> $new_email
-                        	]);
-                        	
+                            ]);
+                        	header('Location: deconnexion.php');
                         	echo "<font style=\"font family: courrier new;\"><strong>L'email' a été changé merci de vous reconnecter</strong></font>";
 
                 }else{

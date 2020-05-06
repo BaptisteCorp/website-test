@@ -70,3 +70,10 @@ form{
     Font-Size:       .5em;
     Opacity:         .8;
 }
+
+#go{
+    width: 120px;
+    height: 50px;
+    font-size: medium;
+    margin-left: -20px;
+}

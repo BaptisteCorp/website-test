@@ -7,8 +7,8 @@
     //Récuperation du dossier usilisateur correspondant au pseudo
     $current_dir=$_SESSION['currentDir'];
     $oui=explode('/',$current_dir);
-    $affiche ='';
-    for ($i=1;$i<count($oui)-1;$i++){
+    $affiche ='/';
+    for ($i=2;$i<count($oui)-1;$i++){
     $affiche.= $oui[$i].'/';
     }
 ?> 
@@ -29,7 +29,7 @@
         </div>
         <div id='nav'>
             
-            <input type='text' placeholder='Rechercher'>
+            <!--<input type='text' placeholder='Rechercher'>-->
             <h1>Bonjour <?php echo $pseudo; ?></h1>
             <div id='icoParam'>
                 <a href="parametres.php" class='param'><img src="images/parametre.png" class='ico'/></a>
@@ -129,7 +129,7 @@
             <form action="add_file.php" method="post" enctype="multipart/form-data">
                 <div id="dropper">Déposez votre fichier</div>
                 <input type="file" name="fileToUpload" id="fileToUpload"/>
-                <input type="submit" value="Upload Image" name="submit"/>
+                <input type="submit" value="Upload" name="submit"/>
             </form>
             <button id="cancelfileDialog">Cancel</button>
         </dialog>
