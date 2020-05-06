@@ -11,7 +11,7 @@ if(isset($_POST["submit"]) && isset($_FILES['fileToUpload'])) {
 
     include 'database.php';
     global $db;
-    $donnees=$db->prepare("SELECT data FROM users WHERE pseudo = 'a'");
+    $donnees=$db->prepare("SELECT data FROM users WHERE pseudo = '$pseudo'");
     $donnees->execute();
     $nbgo = $donnees->fetch();
     $dataUsed=explode('users',shell_exec("du -s users/$pseudo"))[0];

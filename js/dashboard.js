@@ -53,27 +53,3 @@ $(function(){
       $('#nouveau').slideToggle();
   });
 });
-
-
-
-//fonctoin drag&drop dialog upload
-var dropZone = document.getElementById('dropper');
-
-dropper.addEventListener('dragover', function(e) {
-  e.preventDefault(); // Annule l'interdiction de "drop"
-}, false);
-
-dropZone.addEventListener('drop', function(e) {
-  e.preventDefault();
-
-  var files = e.dataTransfer.files,
-      filesLen = files.length,
-      filenames = "";
-
-  for (var i = 0 ; i < filesLen ; i++) {
-      filenames += '\n' + files[i].name;
-  }
-
-  alert(files.length + ' fichier(s) :\n' + filenames);
-});
-

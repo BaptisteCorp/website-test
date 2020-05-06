@@ -9,7 +9,7 @@
 
     include 'database.php';
     global $db;
-    $donnees=$db->prepare("SELECT data FROM users WHERE pseudo = 'a'");
+    $donnees=$db->prepare("SELECT data FROM users WHERE pseudo = '$pseudo'");
     $donnees->execute();
     $nbgo = $donnees->fetch();
 ?> 
