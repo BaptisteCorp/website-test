@@ -62,7 +62,7 @@
                 				$q= $db->prepare("UPDATE users SET password = :password WHERE email = :emaile");
                         		$q->execute([
                             		'password'=> $hashpass,
-                            		'email'=>$emaile
+                            		'email'=> $emaile
                         		]);
 					        }
         			}
