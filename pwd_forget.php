@@ -23,7 +23,7 @@
         <div id="wrapper">
             <a href=dashboard.php class='retour'>Retour accueil</a>
             <form method="post">
-                    <input type="Email" name="emaile" id="emaile" placeholder="Votre Email"><br/>
+                    <input type="email" name="emaile" id="emaile" placeholder="Votre Email"><br/>
                     <input type="submit" name="formsend" id="formsend" value="Envoyer"><br/>
 
             </form>
@@ -59,7 +59,7 @@
                         			'cost' => 12,
                     			];
 					            $hashpass = password_hash($string, PASSWORD_BCRYPT, $options);
-                				$q= $db->prepare("UPDATE users SET password = :password WHERE email = :email");
+                				$q= $db->prepare("UPDATE users SET password = :password WHERE email = :emaile");
                         		$q->execute([
                             		'password'=> $hashpass
                         		]);
