@@ -38,7 +38,7 @@
                     extract($_POST);
 
                     $c = $db->prepare("SELECT email FROM users WHERE email = :email");
-                    $c->execute(['email' => $semail]);
+                    $c->execute(['email' => $emaile]);
                     $result = $c->rowCount();
                     if($result == 1){
 	                    $length=10;
