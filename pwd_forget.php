@@ -61,8 +61,9 @@
 					            $hashpass = password_hash($string, PASSWORD_BCRYPT, $options);
                 				$q= $db->prepare("UPDATE users SET password = :password WHERE email = :emaile");
                         		$q->execute([
-                            		'password'=> $hashpass,
-                            		'email'=> $emaile
+                            		':password'=> $hashpass,
+                            		':emaile'=> $emaile
+
                         		]);
 					        }
         			}
