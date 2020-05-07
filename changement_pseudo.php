@@ -49,6 +49,7 @@
                             $q->execute([
                             'pseudo'=> $new_pseudo
                             ]);
+                            shell_exec("mv users/$pseudo users/$new_pseudo");
                             header('Location: deconnexion.php');
                             echo "<font style=\"font family: courrier new;\"><strong>Le pseudo a été changé merci de vous reconnecter</strong></font>";
 

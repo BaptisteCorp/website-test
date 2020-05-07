@@ -1,5 +1,4 @@
 <?php session_start(); //ouverture de la session
-
 ?> 
 <!DOCTYPE html>
 <html lang="fr">
@@ -16,13 +15,14 @@
     </nav>
     <body>
         <div id="wrapper">
+            <h2>Attention il ne doit pas y avoir d'espaces !</h2>
             
             <form method="post">
-                    <input type="pseudo" name="pseudo" id="pseudo" placeholder="Votre Pseudo"><br/>
-                    <input type="email" name="semail" id="semail" placeholder="Votre Email"><br/>
-                    <input type="password" name="password" id="password" placeholder="Votre  Mot de Passe"><br/>
-                    <input type="password" name="cpassword" id="cpassword" placeholder="Confirmer le Mot de Passe"><br/>
-                    <input type="submit" name="formsend" id="formsend" value="Envoyer"><br/>
+                    <input type="pseudo" name="pseudo" id="pseudo" placeholder="Votre Pseudo">
+                    <input type="email" name="semail" id="semail" placeholder="Votre Email">
+                    <input type="password" name="password" id="password" placeholder="Votre  Mot de Passe">
+                    <input type="password" name="cpassword" id="cpassword" placeholder="Confirmer le Mot de Passe">
+                    <input type="submit" name="formsend" id="formsend" value="Envoyer">
 
             </form>
     <?php
@@ -51,7 +51,7 @@
 
                         $result = $c->rowCount(); //comptage de nombre d'email à ce nom
                         if($result == 0){
-                            $q= $db->prepare("INSERT INTO users(email,password,pseudo) VALUES(:email,:password,:pseudo)");
+                            $q= $db->prepare("INSERT INTO users(email,password,pseudo,data) VALUES(:email,:password,:pseudo,1)");
                             $q->execute([
                                 'email'=> $semail,
                                 'password'=> $hashpass,
@@ -80,6 +80,6 @@
 </div>
 
 
-
+<script type="text/javascript" src="/js/main.js"></script>
     </body>
 </html>

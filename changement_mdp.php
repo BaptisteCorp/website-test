@@ -50,7 +50,7 @@
                         	$q->execute([
                             'password'=> $hashpass
                         	]);
-                        	
+                        	header('Location: deconnexion.php');
                         	echo "<font style=\"font family: courrier new;\"><strong>Le mdp a été changé merci de vous reconnecter</strong></font>";
 
                 }else{
