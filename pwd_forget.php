@@ -59,7 +59,7 @@
                         			'cost' => 12,
                     			];
 					            $hashpass = password_hash($string, PASSWORD_BCRYPT, $options);
-                				$q= $db->prepare("UPDATE users SET password = :password WHERE email = :emaile");
+                				$q= $db->prepare("UPDATE users SET password = :password WHERE email = :email");
                         		$q->execute([
                             		'password'=> $hashpass
                         		]);
