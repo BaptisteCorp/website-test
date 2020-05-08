@@ -24,7 +24,6 @@ dirDialog.addEventListener('close', function onClose() {
     xhttp.open("GET",destination);
     xhttp.send();
     
-    document.location.href="dashboard.php"; 
   }
   
 });
@@ -52,4 +51,22 @@ $(function(){
   $('#nouveauBtn').on('click touch', function(e){
       $('#nouveau').slideToggle();
   });
+});
+
+// script pour déplacer un fichier dans le dossier parent
+var returnBtn = document.getElementById('returnBtn');
+returnBtn.addEventListener('drop', function(e) {
+  e.preventDefault(); // Annule l'interdiction de dragover
+
+  //alert('Fonction non disponible');
+  console.log(draggedElement);
+  const xhttp = new XMLHttpRequest();
+  const destination='deplacement.php?fichier='+draggedElement;
+  
+  xhttp.open("GET",destination);
+  xhttp.send();
+});
+returnBtn.addEventListener('dragover', function(e) {
+  e.preventDefault(); // Annule l'interdiction de drop
+  
 });

@@ -18,7 +18,7 @@
         <title>Homepage</title>
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="css/main.css"/>
-        <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet"> <!-- permet d'utiliser des polices d'écritures différentes -->
         <link rel="stylesheet" href="css/dashboard.css"/>
     </head>
 
@@ -38,7 +38,7 @@
         </div>
     </nav>
     <body>
-        
+        <!-- barre de navigation à gauche de l'écran -->
         <div class="sidenav">
             <button id='nouveauBtn'><img src="images/plus.png" id='plus'/> Nouveau</button>
             <ul id="nouveau">
@@ -54,11 +54,11 @@
             
             
             <div id="dossiers">
-                <h5><?php echo $affiche;?></h5>
-                <a href='return.php' id='returnBtn'><img src="images/retour.png" class="dirIcone"/></a>
+                <h5><?php echo $affiche;?></h5> <!-- affiche le dossier courant -->
+                <a href='deplacement.php?return=ok' id='returnBtn'><img src="images/retour.png" class="dirIcone"/></a> <!-- remonter au dossier parent -->
                 <h2>Dossiers</h2>
                 <?php
-                    $dossiers=explode("$current_dir/",shell_exec("ls -d $current_dir/*/"));
+                    $dossiers=explode("$current_dir/",shell_exec("ls -d $current_dir/*/")); // Cherche tous les dossiers dans le dossier courant
                     $nb_dossiers= count( $dossiers );
                     for ($i=1;$i<($nb_dossiers);$i++){ // depart de 1 pour ne pas compter le premier vide
                 ?>
@@ -72,18 +72,18 @@
             <div id="fichiers">
                 <h2>Fichiers</h2>
                 <?php
-                    $fichiers=explode("\n",shell_exec("ls -F $current_dir| grep -v '/$'"));
+                    $fichiers=explode("\n",shell_exec("ls -F $current_dir| grep -v '/$'")); // cherche tous les fichiers dans le dossier courant
                     $nb_fichiers= count( $fichiers );
                     for ($i=0;$i<($nb_fichiers-1);$i++){ // -1 pour ne pas compter le dernier \n du ls
                         if (strlen($fichiers[$i])>13){
-                            $affiche=substr($fichiers[$i],0,10).'...';
+                            $affiche=substr($fichiers[$i],0,10).'...'; // si le nom du fichier est trop grand, affiche seulement les 10 premiers caractères
                         }
                         else{
                             $affiche=$fichiers[$i];
                         }
                         $image="images/";
                         $extention=explode(".",$fichiers[$i]);
-                        $extention=end($extention);
+                        $extention=end($extention); //affiche une icone differente en fonction de l'extention du fichier
                         if ( strcasecmp($extention,"png")==0 || strcasecmp($extention,"psd")==0 || strcasecmp($extention,"jpg")==0 || strcasecmp($extention,"jpeg")==0 || strcasecmp($extention,"gif")==0){
                             $image.="img.png";
                         }
@@ -110,8 +110,6 @@
             </div>
         </div>
 
-        <!-- Boites de dialogue pour les actions -->
-
         <!-- Boite de dialogue création dossier -->
         <dialog id="dirDialog">
             <h1>Attention ! Il ne doit pas y avoir d'espaces</h1>
@@ -124,6 +122,7 @@
             </form>
         </dialog>
 
+        <!-- Boite de dialogue importation fichier -->
         <dialog id="fileDialog">
             <h1>Attention ! Il ne doit pas y avoir d'espaces</h1>
             <form action="add_file.php" method="post" enctype="multipart/form-data">
@@ -134,24 +133,27 @@
             <button id="cancelfileDialog">Cancel</button>
         </dialog>
 
-        <!-- Boite de dialogue actions files -->
+        <!-- Boite de dialogue actions fichier -->
         <dialog id="actionFileDialog">
                 <h1 id="nom_file"></h1>
                 <a href="<?php echo $current_dir ?>/" Download id="fileDownloader">Télécharger</a>
-                <button type="button" id="renameFile">Renommer</button>
+                <!-- <button type="button" id="renameFile">Renommer</button>-->
                 <button type="button" id="suppFile" >Supprimer</button>
                 <button value="cancel" id="cancelFileButton">Annuler</button>
         </dialog>
 
-        <!-- Boite de dialogue actions dossiers -->
+        <!-- Boite de dialogue actions dossier -->
         <dialog id="actionDirDialog">
                 <h1 id="nom_dir"></h1>
-                <button type="button" id="renameDir">Renomer</button>
+                <!-- <button type="button" id="renameDir">Renomer</button> -->
                 <button type="button" id="suppDir" >Supprimer</button>
                 <button value="cancel" id="cancelDirButton">Annuler</button>
         </dialog>
-
+        
+        <!-- permet d'utiliser les fonction jquery -->
         <script src="js/jquery-3.4.1.min.js"></script>
+
+        <!-- script en rapport avec les fichiers et leur actions -->
         <script type= "text/javascript">
             var nb_files = <?php echo json_encode($fichiers); ?>;
             var actionFileDialog= document.getElementById('actionFileDialog');
@@ -192,19 +194,23 @@
                     suppFile.addEventListener('click',function(){
                         if (fileSelected!=''){
                         const xhttp = new XMLHttpRequest();
-                        const destination='suppFile.php?suppFile='+fileSelected;
+                        const destination='supp.php?fichier='+fileSelected;
     
                         xhttp.open("GET",destination);
                         xhttp.send();
                         fileSelected='';}
                         document.location.href="dashboard.php"; 
                     });
+
                     fileIcon.addEventListener('dragstart',function(e){
                         draggedElement = arg1;
                     });
+
                 })(nb_files[i]);
             }
         </script>
+
+        <!-- script en rapport avec les dossiers et leur actions -->
         <script type= "text/javascript">
             var nb_dossiers = <?php echo json_encode($dossiers); ?>;
             var actionDirDialog= document.getElementById('actionDirDialog');
@@ -242,7 +248,7 @@
                     dirIcon.addEventListener('dblclick',function(){
                         
                         const xhttp = new XMLHttpRequest();
-                        const destination='changement_dir.php?nom_dossier='+arg1;
+                        const destination='deplacement.php?nom_dossier='+arg1;
     
                         xhttp.open("GET",destination);
                         xhttp.send();
@@ -253,7 +259,7 @@
                     suppDir.addEventListener('click',function(){
                         if (dirSelected!=''){
                         const xhttp = new XMLHttpRequest();
-                        const destination='suppDir.php?suppDir='+dirSelected;
+                        const destination='supp.php?dossier='+dirSelected;
     
                         xhttp.open("GET",destination);
                         xhttp.send();
@@ -272,7 +278,7 @@
                         xhttp.open("GET",destination);
                         xhttp.send();
                         
-                        document.location.href="dashboard.php"; 
+                        document.location.href="dashboard.php";
 
                     });
                     dirIcon.addEventListener('dragover', function(e) {

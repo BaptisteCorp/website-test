@@ -34,7 +34,7 @@
                 $antiXSSmail = stripos($semail, '<script>');
                 $antiXSSpseudo = stripos($pseudo, '<script>');
                 $antiXSSmdp = stripos($cpassword, '<script>');
-                if($antiXSSmail === false && $antiXSSpseudo === false && $antiXSSmdp === false) {
+                if($antiXSSmail === false && $antiXSSpseudo === false && $antiXSSmdp === false) { // corrige la faille XSS
 
                     if($password == $cpassword){
 

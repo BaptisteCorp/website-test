@@ -8,8 +8,9 @@
     $current_dir="users/$pseudo";
     if ( !empty($_POST["nbGo"]) && !empty($_POST["motif"]) ){
         $nbGo=$_POST["nbGo"];
-        $motif=$_POST["motif"];
+        $motif=$_POST["motif"]; 
         $success=mail("vielp@hotmail.fr","Demande + de stockage","$pseudo demande $nbGo Go supplementaires \nRaison : $motif",'From: webmaster@serviel.com');
+        // Envoi de mail à mon adresse personnelle afin d'ajouter manuellement du stockage à la personne le demandant
         if (!$success) {
             $errorMessage = error_get_last()['message'];
             echo $errorMessage;

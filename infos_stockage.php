@@ -30,7 +30,7 @@
             <a href="parametres.php">Retour</a>
             <h1>Vous avez une offre <?php echo $nbgo[0]?>Go</h1>
             <h2>Voici ce que vous utilisez</h2>
-            <p><?php echo explode('users',shell_exec("du -sh users/$pseudo"))[0]."/".$nbgo[0]?>Go</p>
+            <p><?php echo explode('users',shell_exec("du -sh users/$pseudo"))[0]."/".$nbgo[0]?>Go</p> <!-- récuperation de la taille du dossier de l'utilisateur -->
             <?php
             $dataUsed=explode('users',shell_exec("du -s users/$pseudo"))[0];
             $dataUsed=(int)$dataUsed;
