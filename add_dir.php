@@ -6,5 +6,5 @@
     $current_dir=$_SESSION['currentDir'];
 
     shell_exec( "mkdir $current_dir$nom_dossier"); // création d'un dossier
-    header('Location: index.php');
+    header('Location: index.php'); // redirection à la page principale
 ?>

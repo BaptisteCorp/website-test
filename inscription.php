@@ -50,8 +50,8 @@
                         $c->execute(['email' => $semail]);
 
                         $result = $c->rowCount(); //comptage de nombre d'email à ce nom
-                        if($result == 0){
-                            $q= $db->prepare("INSERT INTO users(email,password,pseudo,data) VALUES(:email,:password,:pseudo,1)");
+                        if($result == 0){ //s'il n'y en a aucun
+                            $q= $db->prepare("INSERT INTO users(email,password,pseudo,data) VALUES(:email,:password,:pseudo,1)"); //on insere dans la base de données l'email de mot de passe le pseudo et les datas
                             $q->execute([
                                 'email'=> $semail,
                                 'password'=> $hashpass,
