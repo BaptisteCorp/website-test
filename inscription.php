@@ -48,13 +48,22 @@
                             $result = $c->rowCount() + $d->rowCount(); //comptage de nombre d'email à ce nom
                             if($result == 0){ //s'il n'y en a aucun
                                 $_SESSION['data']=array(0 => $semail, $password, $pseudo);
-                                $code=rand(100000,999999);
-                                $_SESSION['mail_code']=$code;
-                                mail($semail,"Confirmation Inscription","Code : $code",'From: webmaster@serviel.com');
+                                $length=10;
+                                $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; // Création d'un de mot de passe de 10 caractères aléatoires avant chiffres majuscules et minuscules
+                                $string = '';
+                                for($i=0; $i<$length; $i++){
+                                    $string .= $chars[rand(0, strlen($chars)-1)];
+                                }
+                                $success=mail($emaile,"Code de confirmation","Voici votre code confirmation : $string",'From: webmaster@serviel.com'); // envoi du mail à l'utilisateur
+                                if (!$success) {
+                                    $errorMessage = error_get_last()['message'];
+                                    echo $errorMessage;
+                                }
+                                else{
+                                echo "Un mail vient de vous être envoyé, pensez à regarder vos spam ;)";
                                 ?>
-                                <h2>Un mail vient de vous être envoyé, pensez à regarder vos spam ;)</h2>
                                 <form method="post" class='formjoli'>
-                                    <input type="number" name="code" id="code">
+                                    <input type="password" name="code" id="code">
                                     <input type="submit" name="formconfirm" id="formconfirm" value="Envoyer">
                                 </form>
                                 <?php
@@ -84,7 +93,7 @@
                 echo "<font style=\"font family: courrier new;\"><strong>Les champs ne sont pas tous remplis</strong></font>";
             }
         }else if (isset($_POST['formconfirm'])){
-            if ($_POST['code']==$_SESSION['mail_code']){
+            if ($_POST['code']==$string{
                 include 'database.php';
                 global $db;
 
