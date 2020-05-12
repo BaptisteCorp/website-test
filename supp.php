@@ -11,4 +11,6 @@
         $current_dir=$_SESSION['currentDir'];
         shell_exec( "rm $current_dir/'$suppFile'");
     }
+    usleep(300000);
+    header('Location: index.php'); // redirection à la page principale
 ?>

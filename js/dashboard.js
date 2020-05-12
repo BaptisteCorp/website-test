@@ -23,7 +23,7 @@ dirDialog.addEventListener('close', function onClose() {
     
     xhttp.open("GET",destination);
     xhttp.send();
-    
+    document.location.href="dashboard.php";
   }
   
 });

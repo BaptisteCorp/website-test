@@ -53,14 +53,17 @@ if(isset($_POST["submit"]) && isset($_FILES['fileToUpload'])) {
     
     } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            echo "The fichier ". basename( $_FILES["fileToUpload"]["name"]). " a été ajouté";
+            usleep(300000);//wait 300ms
+            header('Location: dashboard.php');
         } else {
             echo "Une erreur est survenue";
+            ?>
+            <html>
+	            </br>
+	            <a href="dashboard.php">Retour</a>
+            </html>
+            <?php
         }
     }
 }
 ?>
-<html>
-	</br>
-	<a href="dashboard.php">Retour</a>
-</html>
