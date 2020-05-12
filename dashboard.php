@@ -124,7 +124,6 @@
 
         <!-- Boite de dialogue importation fichier -->
         <dialog id="fileDialog">
-            <h1>Attention ! Il ne doit pas y avoir d'espaces</h1>
             <form action="add_file.php" method="post" enctype="multipart/form-data">
                 
                 <input type="file" name="fileToUpload" id="fileToUpload"/>

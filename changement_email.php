@@ -22,7 +22,7 @@
     </nav>
     <body>
         <div id="wrapper">
-            <a href=dashboard.php class='retour'>Retour accueil</a>
+            <a href='donnees_perso.php' class='retour'>Retour</a>
             <form method="post" class='formjoli'>
                     <!-- création des boites de dialogues pour rentrer la nouvel email-->
                     <input type="email" name="new_email" id="new_email" placeholder="Votre nouvel Email"><br/>

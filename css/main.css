@@ -82,7 +82,9 @@ input::placeholder{
     width:auto;
 
     font-family: 'Poppins', sans-serif;
-    font-weight: 400;}
+    font-weight: 200;
+    color: #C0BDBD;
+    opacity: 0.5;}
 
 /* Enlever le souligné des liens*/
 a{

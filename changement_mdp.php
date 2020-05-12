@@ -22,7 +22,7 @@
     </nav>
     <body>
         <div id="wrapper">
-        	<a href=donnees_perso.php class='retour'>Retour</a>
+        	<a href='donnees_perso.php' class='retour'>Retour</a>
             <form method="post" class='formjoli'>
                     <input type="password" name="new_password" id="new_password" placeholder="Votre Nouveau Mot de Passe"><br/>
                     <input type="password" name="newc_password" id="newc_password" placeholder="Confirmer Votre Nouveau Mot de Passe"><br/>

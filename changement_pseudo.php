@@ -22,7 +22,7 @@
     </nav>
     <body>
         <div id="wrapper">
-            <a href=dashboard.php class='retour'>Retour accueil</a>
+            <a href='donnees_perso.php' class='retour'>Retour</a>
             <form method="post" class='formjoli'>
                     <input type="pseudo" name="new_pseudo" id="new_pseudo" placeholder="Votre nouveau pseudo"><br/>
                     <input type="pseudo" name="newc_pseudo" id="newc_pseudo" placeholder="Confirmer votre nouveau pseudo"><br/>
@@ -39,23 +39,30 @@
                     if(!empty($new_pseudo) && !empty($newc_pseudo)){
 
                         if($new_pseudo == $newc_pseudo){
-                            $antiXSS = stripos($new_pseudo, '<script>');
-                            if($antiXSS === false){
-                                include 'database.php';
-                                global $db;
-                                $options = [
-                                    'cost' => 12,
-                                ];
-                                
-                                $q= $db->prepare("UPDATE users SET pseudo = :pseudo WHERE pseudo = '$pseudo' ");
-                                $q->execute([
-                                'pseudo'=> $new_pseudo
-                                ]);
-                                shell_exec("mv users/$pseudo users/$new_pseudo");
-                                header('Location: deconnexion.php');
-                                echo "<font style=\"font family: courrier new;\"><strong>Le pseudo a été changé merci de vous reconnecter</strong></font>";
+
+                            if (stripos($new_pseudo, ' ') === false){
+
+                                $antiXSS = stripos($new_pseudo, '<script>');
+                                if($antiXSS === false){
+
+                                    include 'database.php';
+                                    global $db;
+                                    $options = [
+                                        'cost' => 12,
+                                    ];
+                                    
+                                    $q= $db->prepare("UPDATE users SET pseudo = :pseudo WHERE pseudo = '$pseudo' ");
+                                    $q->execute([
+                                    'pseudo'=> $new_pseudo
+                                    ]);
+                                    shell_exec("mv users/$pseudo users/$new_pseudo");
+                                    header('Location: deconnexion.php');
+                                    echo "<font style=\"font family: courrier new;\"><strong>Le pseudo a été changé merci de vous reconnecter</strong></font>";
+                                }else{
+                                    echo "<font style=\"font family: courrier new;\"><strong>Site protégé contre le XSS</strong></font>";
+                                }
                             }else{
-                                echo "<font style=\"font family: courrier new;\"><strong>Site protégé contre le XSS</strong></font>";
+                                echo "<font style=\"font family: courrier new;\"><strong>Il ne doit pas y avoir d'espaces</strong></font>";
                             }
                 }else{
                     echo "<font style=\"font family: courrier new;\"><strong>Les pseudos ne correspondent pas</strong></font>";

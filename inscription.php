@@ -15,7 +15,6 @@
     </nav>
     <body>
         <div id="wrapper">
-            <h2>Attention il ne doit pas y avoir d'espaces !</h2>
             
             <form method="post" class='formjoli'>
                     <input type="pseudo" name="pseudo" id="pseudo" placeholder="Votre Pseudo">
@@ -35,40 +34,45 @@
                 $antiXSSpseudo = stripos($pseudo, '<script>');
                 $antiXSSmdp = stripos($cpassword, '<script>');
                 if($antiXSSmail === false && $antiXSSpseudo === false && $antiXSSmdp === false) { // corrige la faille XSS
+                    
+                    if( stripos($pseudo, ' ') === false ){
 
-                    if($password == $cpassword){
+                        if($password == $cpassword){
 
-                        $options = [
-                            'cost' => 12,
-                        ];
+                            $options = [
+                                'cost' => 12,
+                            ];
 
-                        $hashpass = password_hash($password, PASSWORD_BCRYPT, $options);
-                        include 'database.php';
-                        global $db;
+                            $hashpass = password_hash($password, PASSWORD_BCRYPT, $options);
+                            include 'database.php';
+                            global $db;
 
-                        $c = $db->prepare("SELECT email FROM users WHERE email = :email"); //on prend dans la table users les emails
-                        $c->execute(['email' => $semail]);
+                            $c = $db->prepare("SELECT email FROM users WHERE email = :email"); //on prend dans la table users les emails
+                            $c->execute(['email' => $semail]);
 
-                        $result = $c->rowCount(); //comptage de nombre d'email à ce nom
-                        if($result == 0){ //s'il n'y en a aucun
-                            $q= $db->prepare("INSERT INTO users(email,password,pseudo,data) VALUES(:email,:password,:pseudo,1)"); //on insere dans la base de données l'email de mot de passe le pseudo et les datas
-                            $q->execute([
-                                'email'=> $semail,
-                                'password'=> $hashpass,
-                                'pseudo'=> $pseudo
-                            ]);
-                            shell_exec("mkdir users/$pseudo/");
-                            echo "<font style=\"font family: courrier new;\"><strong>Le compte a été crée</strong></font>";
-                            header('Location: index.php');
-                            }else{
-                                echo "<font style=\"font family: courrier new;\"><strong>Un Email identique existe déjà</strong></font>";
-                            }
+                            $result = $c->rowCount(); //comptage de nombre d'email à ce nom
+                            if($result == 0){ //s'il n'y en a aucun
+                                $q= $db->prepare("INSERT INTO users(email,password,pseudo,data) VALUES(:email,:password,:pseudo,1)"); //on insere dans la base de données l'email de mot de passe le pseudo et les datas
+                                $q->execute([
+                                    'email'=> $semail,
+                                    'password'=> $hashpass,
+                                    'pseudo'=> $pseudo
+                                ]);
+                                shell_exec("mkdir users/$pseudo/");
+                                echo "<font style=\"font family: courrier new;\"><strong>Le compte a été crée</strong></font>";
+                                header('Location: index.php');
+                                }else{
+                                    echo "<font style=\"font family: courrier new;\"><strong>Un Email identique existe déjà</strong></font>";
+                                }
 
+                        }else{
+                            echo "<font style=\"font family: courrier new;\"><strong>Les mot de passes ne correspondent pas</strong></font>";
+                        }
                     }else{
-                        echo "<font style=\"font family: courrier new;\"><strong>Les mot de passes ne correspondent pas</strong></font>";
+                        echo "<font style=\"font family: courrier new;\"><strong>Il ne doit pas y avoir d'espaces dans le pseudo</strong></font>";
                     }
                 }else{
-                    echo "<script>alert(\"Site protégé contre le XSS\")</script>";
+                    echo "<font style=\"font family: courrier new;\"><strong>Site protégé contre le XSS</strong></font>";
                 }
             }else{
                 echo "<font style=\"font family: courrier new;\"><strong>Les champs ne sont pas tous remplis</strong></font>";
