@@ -94,7 +94,7 @@
                 echo "<font style=\"font family: courrier new;\"><strong>Les champs ne sont pas tous remplis</strong></font>";
             }
         }else if (isset($_POST['formconfirm'])){
-            if ($_POST['code']==$string{
+            if ($_POST['code']==$string){
                 include 'database.php';
                 global $db;
 
