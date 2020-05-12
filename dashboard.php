@@ -45,9 +45,9 @@
                 <li><button id="dirButton">Créer un dossier</button></li>
                 <li><button id="fileButton">Importer un fichier</button></li>
             </ul>
-            <button disabled><img src="images/myFiles.png" id='plus'/>Mon Cloud</button>
-            <button disabled><img src="images/share.png" id='plus'/>Partagé</button>
-            <button disabled><img src="images/important.png" id='plus'/>Important</button>
+            <button onclick="alert('Bientot disponible ;)')"><img src="images/myFiles.png" id='plus'/>Mon Cloud</button>
+            <button onclick="alert('Bientot disponible ;)')"><img src="images/share.png" id='plus'/>Partagé</button>
+            <button onclick="alert('Bientot disponible ;)')"><img src="images/important.png" id='plus'/>Important</button>
         </div>
         <!-- Affichage  fichiers et dossiers -->
         <div id="stockage">
