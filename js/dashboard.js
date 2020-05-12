@@ -65,6 +65,7 @@ returnBtn.addEventListener('drop', function(e) {
   
   xhttp.open("GET",destination);
   xhttp.send();
+  document.location.href="dashboard.php";
 });
 returnBtn.addEventListener('dragover', function(e) {
   e.preventDefault(); // Annule l'interdiction de drop

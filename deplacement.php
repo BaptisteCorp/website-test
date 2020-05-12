@@ -5,15 +5,15 @@
         $fichier=$_GET['fichier'];
         $current_dir=$_SESSION['currentDir'];
 
-        shell_exec( "mv $current_dir$fichier $current_dir$dossier");
+        shell_exec( "mv $current_dir'$fichier' $current_dir$dossier");
 
-    }else if(isset($_GET['fichier'])){// déplacer un fchier dans le dossier parent
+    }else if(isset($_GET['fichier'])){// déplacer un fichier dans le dossier parent
         $fichier=$_GET['fichier'];
         //Récuperation du dossier usilisateur correspondant au pseudo
         $current_dir=$_SESSION['currentDir'];
         $pseudo=$_SESSION['pseudo'];
         if ($current_dir!="users/$pseudo/"){ // interdit de sortir un fichier de son espace personnel
-            echo shell_exec( "mv $current_dir$fichier $current_dir/../");
+            echo shell_exec( "mv $current_dir'$fichier' $current_dir/../");
         }
         
     }else if (isset($_GET['nom_dossier'])){ // permet de se réplacer dans le dossier selectionné
@@ -28,6 +28,6 @@
             $_SESSION["currentDir"]=$chemin;
         }
     }
-    usleep(100000);//wait 100ms
+    usleep(300000);//wait 300ms
     header('Location: dashboard.php');
 ?>

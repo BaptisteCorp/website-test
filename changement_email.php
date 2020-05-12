@@ -40,27 +40,31 @@
             		if(!empty($new_email) && !empty($newc_email)){ //si les formulaires d'email ne sont pas vides
 
                 		if($new_email == $newc_email){
-                			include 'database.php'; //inclure la base de donnée @serviel.ddns.net/phpmyadmin
-    						global $db;
-    						$options = [
-                        		'cost' => 12,
-                            ];
-                            
-                            $q= $db->prepare("UPDATE users SET email = :email WHERE pseudo = '$pseudo' "); //requete SQL qui met à jour l'email à l'endroit où se situe le pseudo de l'utilisateur 
-                        	$q->execute([
-                            'email'=> $new_email //execution de la requete
-                            ]);
-                        	header('Location: deconnexion.php'); //redirection à la page de deconnexion 
-                        	echo "<font style=\"font family: courrier new;\"><strong>L'email' a été changé merci de vous reconnecter</strong></font>";
+                            $antiXSS = stripos($new_email, '<script>');
+                            if($antiXSS === false){
+                                include 'database.php'; //inclure la base de donnée @serviel.ddns.net/phpmyadmin
+                                global $db;
+                                $options = [
+                                    'cost' => 12,
+                                ];
+                                
+                                $q= $db->prepare("UPDATE users SET email = :email WHERE pseudo = '$pseudo' "); //requete SQL qui met à jour l'email à l'endroit où se situe le pseudo de l'utilisateur 
+                                $q->execute([
+                                'email'=> $new_email //execution de la requete
+                                ]);
+                                header('Location: deconnexion.php'); //redirection à la page de deconnexion 
+                                echo "<font style=\"font family: courrier new;\"><strong>L'email' a été changé merci de vous reconnecter</strong></font>";
+                            }else{
+                                echo "<font style=\"font family: courrier new;\"><strong>Site protégé contre le XSS</strong></font>";
+                            }
+                        }else{
+                            echo "<font style=\"font family: courrier new;\"><strong>Les mot de passes ne correspondent pas</strong></font>";
+                        }
 
-                }else{
-                    echo "<font style=\"font family: courrier new;\"><strong>Les mot de passes ne correspondent pas</strong></font>";
+                    }else{
+                        echo "<font style=\"font family: courrier new;\"><strong>Les champs ne sont pas tous remplis</strong></font>";
+                    }
                 }
-
-            }else{
-                echo "<font style=\"font family: courrier new;\"><strong>Les champs ne sont pas tous remplis</strong></font>";
-            }
-        }
         ?>
     </div>
     </body>

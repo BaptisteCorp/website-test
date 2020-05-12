@@ -4,8 +4,8 @@ if(isset($_POST["submit"]) && isset($_FILES['fileToUpload'])) {
 
     session_start(); //ouverture de la session
     $target_dir = $_SESSION['currentDir'];
-    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
+    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     $pseudo=$_SESSION['pseudo'];
 
@@ -18,6 +18,13 @@ if(isset($_POST["submit"]) && isset($_FILES['fileToUpload'])) {
     $dataUsed=(int)$dataUsed;
     $dataUsed*=10**-6;
 
+    /*$antiEspace = stripos($_FILES["fileToUpload"]["name"], ' ');
+    if($antiEspace !== false){
+        echo "Il y a un espace dans le nom du fichier";
+        $target_file .=str_replace(' ','_',$_FILES["fileToUpload"]["name"]);
+    }else{
+        $target_file .= 
+    }*/
     
     // Teste si le fichier existe déjà
     if (file_exists($target_file)) {

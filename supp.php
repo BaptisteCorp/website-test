@@ -9,6 +9,6 @@
     }else if (isset($_GET['fichier'])){ //suppression fichier
         $suppFile=$_GET['fichier'];
         $current_dir=$_SESSION['currentDir'];
-        shell_exec( "rm $current_dir/$suppFile");
+        shell_exec( "rm $current_dir/'$suppFile'");
     }
 ?>

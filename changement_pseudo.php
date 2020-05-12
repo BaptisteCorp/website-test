@@ -39,20 +39,24 @@
                     if(!empty($new_pseudo) && !empty($newc_pseudo)){
 
                         if($new_pseudo == $newc_pseudo){
-                            include 'database.php';
-                            global $db;
-                            $options = [
-                                'cost' => 12,
-                            ];
-                            
-                            $q= $db->prepare("UPDATE users SET pseudo = :pseudo WHERE pseudo = '$pseudo' ");
-                            $q->execute([
-                            'pseudo'=> $new_pseudo
-                            ]);
-                            shell_exec("mv users/$pseudo users/$new_pseudo");
-                            header('Location: deconnexion.php');
-                            echo "<font style=\"font family: courrier new;\"><strong>Le pseudo a été changé merci de vous reconnecter</strong></font>";
-
+                            $antiXSS = stripos($new_pseudo, '<script>');
+                            if($antiXSS === false){
+                                include 'database.php';
+                                global $db;
+                                $options = [
+                                    'cost' => 12,
+                                ];
+                                
+                                $q= $db->prepare("UPDATE users SET pseudo = :pseudo WHERE pseudo = '$pseudo' ");
+                                $q->execute([
+                                'pseudo'=> $new_pseudo
+                                ]);
+                                shell_exec("mv users/$pseudo users/$new_pseudo");
+                                header('Location: deconnexion.php');
+                                echo "<font style=\"font family: courrier new;\"><strong>Le pseudo a été changé merci de vous reconnecter</strong></font>";
+                            }else{
+                                echo "<font style=\"font family: courrier new;\"><strong>Site protégé contre le XSS</strong></font>";
+                            }
                 }else{
                     echo "<font style=\"font family: courrier new;\"><strong>Les pseudos ne correspondent pas</strong></font>";
                 }

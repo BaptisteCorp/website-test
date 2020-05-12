@@ -39,27 +39,31 @@
             		if(!empty($new_password) && !empty($newc_password)){
 
                 		if($new_password == $newc_password){
-                			include 'database.php'; //inclure la base de donnée @serviel.ddns.net/phpmyadmin
-    						global $db;
-    						$options = [
-                        		'cost' => 12,
-                    		];
+                            $antiXSS = stripos($new_password, '<script>');
+                            if($antiXSS === false){
+                                include 'database.php'; //inclure la base de donnée @serviel.ddns.net/phpmyadmin
+                                global $db;
+                                $options = [
+                                    'cost' => 12,
+                                ];
 
-                    		$hashpass = password_hash($new_password, PASSWORD_BCRYPT, $options); //on crypte le mot de passe avant de l'inclure dans la base de données
-                			$q= $db->prepare("UPDATE users SET password = :password WHERE pseudo = '$pseudo' "); //requete SQL qui met à jour le mot de passe à l'endroit où se situe le pseudo de l'utilisateur
-                        	$q->execute([
-                            'password'=> $hashpass
-                        	]);
-                        	header('Location: deconnexion.php');
-                        	echo "<font style=\"font family: courrier new;\"><strong>Le mdp a été changé merci de vous reconnecter</strong></font>";
+                                $hashpass = password_hash($new_password, PASSWORD_BCRYPT, $options); //on crypte le mot de passe avant de l'inclure dans la base de données
+                                $q= $db->prepare("UPDATE users SET password = :password WHERE pseudo = '$pseudo' "); //requete SQL qui met à jour le mot de passe à l'endroit où se situe le pseudo de l'utilisateur
+                                $q->execute([
+                                'password'=> $hashpass
+                                ]);
+                                header('Location: deconnexion.php');
+                                echo "<font style=\"font family: courrier new;\"><strong>Le mdp a été changé merci de vous reconnecter</strong></font>";
+                            }else{
+                                echo "<font style=\"font family: courrier new;\"><strong>Site protégé contre le XSS</strong></font>";
+                            }
+                        }else{
+                            echo "<font style=\"font family: courrier new;\"><strong>Les mot de passes ne correspondent pas</strong></font>";
+                        }
 
-                }else{
-                    echo "<font style=\"font family: courrier new;\"><strong>Les mot de passes ne correspondent pas</strong></font>";
-                }
-
-            }else{
-                echo "<font style=\"font family: courrier new;\"><strong>Les champs ne sont pas tous remplis</strong></font>";
-            }
+                    }else{
+                        echo "<font style=\"font family: courrier new;\"><strong>Les champs ne sont pas tous remplis</strong></font>";
+                    }
         }
         ?>
     </div>
