@@ -54,14 +54,14 @@
                                 for($i=0; $i<$length; $i++){
                                     $string .= $chars[rand(0, strlen($chars)-1)];
                                 }
-                                $success=mail($email,"Code de confirmation","Voici votre code confirmation : $string",'From: webmaster@serviel.com'); // envoi du mail à l'utilisateur
+                                $success=mail($semail,"Code de confirmation","Voici votre code confirmation : $string",'From: webmaster@serviel.com'); // envoi du mail à l'utilisateur
                                 if (!$success) {
                                     $errorMessage = error_get_last()['message'];
                                     echo $errorMessage;
                                 }
                                 else{
                                 echo "Un mail vient de vous être envoyé, pensez à regarder vos spam ;)";
-                                echo $email;
+                                echo $semail;
                                 }
                                 ?>
                                 <form method="post" class='formjoli'>
