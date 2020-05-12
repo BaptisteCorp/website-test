@@ -114,7 +114,7 @@ form{
 	bottom: -2px;
 	width: 0%;
 	height: 2px;
-	background-color: #38d39f;
+	background-color: #8ceefa;
 	transition: .4s;
 }
 
@@ -136,7 +136,7 @@ form{
 }
 
 .input-div.focus > .i > i{
-	color: #38d39f;
+	color: #8ceefa;
 }
 
 .input-div > div > input{
