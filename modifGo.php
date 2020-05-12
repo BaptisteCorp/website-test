@@ -45,7 +45,7 @@
         <div id="wrapper">
             <a href="parametres.php">Retour</a>
             <h2>Formulaire de demande d'augmentation du stockage</h2>
-            <form action="modifGo.php" method='post'>
+            <form action="modifGo.php" method='post' class='formjoli'>
                 <input type='number'    name='nbGo'     min="0" placeholder='Nombre de Go'/>
                 <input type='text'      name='motif'    required    placeholder="motif"/>
                 <input type="submit"    name='envoi'    value="Envoyer"/>

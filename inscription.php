@@ -17,7 +17,7 @@
         <div id="wrapper">
             <h2>Attention il ne doit pas y avoir d'espaces !</h2>
             
-            <form method="post">
+            <form method="post" class='formjoli'>
                     <input type="pseudo" name="pseudo" id="pseudo" placeholder="Votre Pseudo">
                     <input type="email" name="semail" id="semail" placeholder="Votre Email">
                     <input type="password" name="password" id="password" placeholder="Votre  Mot de Passe">

@@ -23,7 +23,7 @@
     <body>
         <div id="wrapper">
             <a href=dashboard.php class='retour'>Retour accueil</a>
-            <form method="post">
+            <form method="post" class='formjoli'>
                     <input type="email" name="new_email" id="new_email" placeholder="Votre nouvel Email"><br/>
                     <input type="email" name="newc_email" id="newc_email" placeholder="Confirmer Votre nouvel Email"><br/>
                     <input type="submit" name="formsend" id="formsend" value="Envoyer"><br/>

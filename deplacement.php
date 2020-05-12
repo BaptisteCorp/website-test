@@ -28,5 +28,6 @@
             $_SESSION["currentDir"]=$chemin;
         }
     }
+    usleep(100000);//wait 100ms
     header('Location: dashboard.php');
 ?>

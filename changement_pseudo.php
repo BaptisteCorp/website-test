@@ -23,7 +23,7 @@
     <body>
         <div id="wrapper">
             <a href=dashboard.php class='retour'>Retour accueil</a>
-            <form method="post">
+            <form method="post" class='formjoli'>
                     <input type="pseudo" name="new_pseudo" id="new_pseudo" placeholder="Votre nouveau pseudo"><br/>
                     <input type="pseudo" name="newc_pseudo" id="newc_pseudo" placeholder="Confirmer votre nouveau pseudo"><br/>
                     <input type="submit" name="formsend" id="formsend" value="Envoyer"><br/>
