@@ -6,6 +6,6 @@
     $current_dir=$_SESSION['currentDir'];
 
     shell_exec( "mkdir $current_dir$nom_dossier"); // création d'un dossier
-    usleep(100000);
+    usleep(300000);
     header('Location: index.php'); // redirection à la page principale
 ?>

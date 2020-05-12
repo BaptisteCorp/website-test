@@ -7,6 +7,12 @@
     //Récuperation du dossier usilisateur correspondant au pseudo
     $current_dir="users/$pseudo";
     shell_exec("rm -dr $current_dir/");
+
+    include 'database.php';
+    global $db;
+    $donnees=$db->prepare("DELETE FROM users WHERE pseudo = '$pseudo' ");
+    $donnees->execute();
+
     session_unset();
     session_destroy();
 ?> 
