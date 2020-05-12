@@ -72,6 +72,7 @@
 
                         if(password_verify($lpassword, $result['password'])){
                             echo "Le mot de passe est bon , connexion";
+                            //création de variables de session réutilisables sur toutes les pages php
                             $_SESSION["pseudo"]=$result['pseudo']; //permet de récupérer le pseudo de la personne qui se connecte
                             $_SESSION["lemail"]=$result['email'];
                             $_SESSION["lpassword"]=$result['password'];

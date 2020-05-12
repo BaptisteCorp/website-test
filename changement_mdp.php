@@ -32,21 +32,21 @@
             
 
              <?php
-
+                //si le formulaire est bien rempli alors on poursuit
         		if(isset($_POST['formsend'])){
             		extract($_POST);
 
             		if(!empty($new_password) && !empty($newc_password)){
 
                 		if($new_password == $newc_password){
-                			include 'database.php';
+                			include 'database.php'; //inclure la base de donnée @serviel.ddns.net/phpmyadmin
     						global $db;
     						$options = [
                         		'cost' => 12,
                     		];
 
-                    		$hashpass = password_hash($new_password, PASSWORD_BCRYPT, $options);
-                			$q= $db->prepare("UPDATE users SET password = :password WHERE pseudo = '$pseudo' ");
+                    		$hashpass = password_hash($new_password, PASSWORD_BCRYPT, $options); //on crypte le mot de passe avant de l'inclure dans la base de données
+                			$q= $db->prepare("UPDATE users SET password = :password WHERE pseudo = '$pseudo' "); //requete SQL qui met à jour le mot de passe à l'endroit où se situe le pseudo de l'utilisateur
                         	$q->execute([
                             'password'=> $hashpass
                         	]);
