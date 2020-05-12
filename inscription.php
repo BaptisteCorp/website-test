@@ -61,6 +61,7 @@
                                 }
                                 else{
                                 echo "Un mail vient de vous être envoyé, pensez à regarder vos spam ;)";
+                                }
                                 ?>
                                 <form method="post" class='formjoli'>
                                     <input type="password" name="code" id="code">
