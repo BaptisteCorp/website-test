@@ -51,9 +51,11 @@
                                 $length=10;
                                 $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; // Création d'un de mot de passe de 10 caractères aléatoires avant chiffres majuscules et minuscules
                                 $string = '';
+
                                 for($i=0; $i<$length; $i++){
                                     $string .= $chars[rand(0, strlen($chars)-1)];
                                 }
+                                $_SESSION['code']=$string;
                                 $success=mail($semail,"Code de confirmation","Voici votre code confirmation : $string",'From: webmaster@serviel.com'); // envoi du mail à l'utilisateur
                                 if (!$success) {
                                     $errorMessage = error_get_last()['message'];
@@ -95,7 +97,7 @@
                 echo "<font style=\"font family: courrier new;\"><strong>Les champs ne sont pas tous remplis</strong></font>";
             }
         }else if (isset($_POST['formconfirm'])){
-            if ($_POST['code']==$string){
+            if ($_POST['code']==$_SESSION['code']){
                 include 'database.php';
                 global $db;
 
