@@ -18,14 +18,17 @@ dirDialog.addEventListener('close', function onClose() {
   if (selectEl.value==""){
     outputBox.value = "Vous n'avez pas renseigné de nom";
   }else{
-    const xhttp = new XMLHttpRequest();
-    const destination='add_dir.php?nom_dossier='+selectEl.value;
-    
-    xhttp.open("GET",destination);
-    xhttp.send();
-    document.location.href="dashboard.php";
+    if(selectEl.value.indexOf(" ")==-1){
+      const xhttp = new XMLHttpRequest();
+      const destination='add_dir.php?nom_dossier='+selectEl.value;
+      
+      xhttp.open("GET",destination);
+      xhttp.send();
+      document.location.href="dashboard.php";
+    }else{
+      alert('Il ne doit pas y avoir d\'espace');
+    }
   }
-  
 });
 
 // Upload file
