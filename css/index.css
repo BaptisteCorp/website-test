@@ -1,7 +1,7 @@
 html{
 	height: max-content;
 	height: -webkit-fill-available;
-    background-image: linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35)) ;
+    background-image: linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgb(136, 212, 170, 0.35));
     background-repeat: no-repeat;
     background-size: 100%;
 
@@ -114,7 +114,7 @@ form{
 	bottom: -2px;
 	width: 0%;
 	height: 2px;
-	background-color: #8ceefa;
+	background-color: rgb(136, 212, 170);
 	transition: .4s;
 }
 
@@ -136,7 +136,7 @@ form{
 }
 
 .input-div.focus > .i > i{
-	color: #8ceefa;
+	color: rgb(136, 212, 170);
 }
 
 .input-div > div > input{
