@@ -86,7 +86,7 @@ a,#dossiers,#fichiers{
   border-width: 1px;
   border-radius: 20px;
 
-  background-color: #8ceefa;
+  background-color: rgb(136, 212, 170);
 }
 
 /* The navigation menu links */
