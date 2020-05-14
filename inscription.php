@@ -67,7 +67,7 @@
                                         <title>Bienvenue sur votre Cloud</title> 
                                     </head> 
                                     <body> 
-                                        <p align="center"><img id="cloudIcone"src="/images/cloud.png" /></p>
+                                        <p align="center"><img id="cloudIcone"src="/images/cloud.png" alt="nuage" /></p>
                                         <h1>Merci de nous rejoindre! </h1> 
                                         <table cellspacing="0" style="border: 2px dashed #14fb9f; width: 100%;"> 
                                             
