@@ -67,15 +67,15 @@
                                         <title>Bienvenue sur votre Cloud</title> 
                                     </head> 
                                     <body> 
-                                        <p align="center"><img id="cloudIcone"src="/images/cloud.png" alt="nuage" /></p>
+                                        <p align="center"><img src="cloudIcone"src="/images/cloud.png" alt="nuage" /></p>
                                         <h1>Merci de nous rejoindre! </h1> 
-                                        <table cellspacing="0" style="border: 2px dashed #14fb9f; width: 100%;"> 
+                                        <table cellspacing="0" style="border: 4mm ridge rgba(50, 220, 127, .6); width: 100%;"> 
                                             
                                             <tr style="background-color: #e0e0e0;"> 
                                                 <th>Contact :</th><td>webmaster@serviel.com</td> 
                                             </tr> 
                                             <tr> 
-                                                <th>Website:</th><td><a href="serviel.ddns.com:8000"</a></td> 
+                                                <th>Website:</th><td><a href="serviel.ddns.net:8000">Website</a></td> 
                                             </tr> 
                                         </table> 
                                     </body> 
