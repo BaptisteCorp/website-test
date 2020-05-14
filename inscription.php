@@ -67,8 +67,8 @@
                                         <title>Bienvenue sur votre Cloud</title> 
                                     </head> 
                                     <body> 
-                                        <p align="center"><img id="cloudIcone"src="images/cloud.png" /></p>
-                                        <h1>Merci de nous rejoindre! Voici votre code de confirmation : $string </h1> 
+                                        <p align="center"><img id="cloudIcone"src="/images/cloud.png" /></p>
+                                        <h1>Merci de nous rejoindre! </h1> 
                                         <table cellspacing="0" style="border: 2px dashed #14fb9f; width: 100%;"> 
                                             
                                             <tr style="background-color: #e0e0e0;"> 
@@ -79,7 +79,8 @@
                                             </tr> 
                                         </table> 
                                     </body> 
-                                    </html>'; 
+                                    </html>';
+                                $message .= "Voici votre code de confirmation : $string" 
                                                                 
                                 $success=mail($semail,"Code de confirmation",$message,$headers); // envoi du mail à l'utilisateur
                                 if (!$success) {
