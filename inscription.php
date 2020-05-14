@@ -56,7 +56,12 @@
                                     $string .= $chars[rand(0, strlen($chars)-1)];
                                 }
                                 $_SESSION['code']=$string;
-                                $success=mail($semail,"Code de confirmation","Voici votre code confirmation : $string",'From: webmaster@serviel.com'); // envoi du mail à l'utilisateur
+                                $message = '<html><body>';
+                                $message .= '<img id="cloudIcone"src="images/cloud.png" alt="nuage"/>';
+                                $message .= '<h1>Voici votre code confirmation : $string </h1>';
+                                $message .= '</body></html>';
+                                
+                                $success=mail($semail,"Code de confirmation",$message,'From: webmaster@serviel.com'); // envoi du mail à l'utilisateur
                                 if (!$success) {
                                     $errorMessage = error_get_last()['message'];
                                     echo $errorMessage;
