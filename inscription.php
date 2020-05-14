@@ -80,7 +80,7 @@
                                         </table> 
                                     </body> 
                                     </html>';
-                                $message .= "Voici votre code de confirmation : $string" 
+                                $message .= "Voici votre code de confirmation : $string";
                                                                 
                                 $success=mail($semail,"Code de confirmation",$message,$headers); // envoi du mail à l'utilisateur
                                 if (!$success) {
