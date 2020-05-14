@@ -57,8 +57,6 @@
                                 }
                                 $_SESSION['code']=$string;
 
-                                $headers = "From: " . strip_tags($_POST['req-email']) . "\r\n";
-                                $headers .= "Reply-To: ". strip_tags($_POST['req-email']) . "\r\n";
                                 $headers .= "CC: webmaster@serviel.com\r\n";
                                 $headers .= "MIME-Version: 1.0\r\n";
                                 $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
@@ -68,16 +66,15 @@
                                         <title>Bienvenue sur votre Cloud</title> 
                                     </head> 
                                     <body> 
-                                        <h1>Merci de nous rejoindre!</h1> 
-                                        <table cellspacing="0" style="border: 2px dashed #FB4314; width: 100%;"> 
-                                            <tr> 
-                                                <th>Name:</th><td>Serviel</td> 
-                                            </tr> 
+                                        <p align="center"><img id="cloudIcone"src="images/cloud.png" /></p>
+                                        <h1>Merci de nous rejoindre! Voici votre code de confirmation : $string </h1> 
+                                        <table cellspacing="0" style="border: 2px dashed #14fb9f; width: 100%;"> 
+                                            
                                             <tr style="background-color: #e0e0e0;"> 
-                                                <th>Email:</th><td>webmaster@serviel.com</td> 
+                                                <th>Contact :</th><td>webmaster@serviel.com</td> 
                                             </tr> 
                                             <tr> 
-                                                <th>Website:</th><td><a href="serviel.ddns.com:8000</a></td> 
+                                                <th>Website:</th><td><a href="serviel.ddns.com:8000"</a></td> 
                                             </tr> 
                                         </table> 
                                     </body> 
