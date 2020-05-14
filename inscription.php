@@ -56,28 +56,34 @@
                                     $string .= $chars[rand(0, strlen($chars)-1)];
                                 }
                                 $_SESSION['code']=$string;
+
+                                $headers = "From: " . strip_tags($_POST['req-email']) . "\r\n";
+                                $headers .= "Reply-To: ". strip_tags($_POST['req-email']) . "\r\n";
+                                $headers .= "CC: webmaster@serviel.com\r\n";
+                                $headers .= "MIME-Version: 1.0\r\n";
+                                $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
                                 $message = ' 
                                     <html> 
                                     <head> 
-                                        <title>Welcome to CodexWorld</title> 
+                                        <title>Bienvenue sur votre Cloud</title> 
                                     </head> 
                                     <body> 
-                                        <h1>Thanks you for joining with us!</h1> 
+                                        <h1>Merci de nous rejoindre!</h1> 
                                         <table cellspacing="0" style="border: 2px dashed #FB4314; width: 100%;"> 
                                             <tr> 
-                                                <th>Name:</th><td>CodexWorld</td> 
+                                                <th>Name:</th><td>Serviel</td> 
                                             </tr> 
                                             <tr style="background-color: #e0e0e0;"> 
-                                                <th>Email:</th><td>contact@codexworld.com</td> 
+                                                <th>Email:</th><td>webmaster@serviel.com</td> 
                                             </tr> 
                                             <tr> 
-                                                <th>Website:</th><td><a href="http://www.codexworld.com">www.codexworld.com</a></td> 
+                                                <th>Website:</th><td><a href="serviel.ddns.com:8000</a></td> 
                                             </tr> 
                                         </table> 
                                     </body> 
                                     </html>'; 
                                                                 
-                                $success=mail($semail,"Code de confirmation",$message,'From: webmaster@serviel.com'); // envoi du mail à l'utilisateur
+                                $success=mail($semail,"Code de confirmation",$message,$headers); // envoi du mail à l'utilisateur
                                 if (!$success) {
                                     $errorMessage = error_get_last()['message'];
                                     echo $errorMessage;
