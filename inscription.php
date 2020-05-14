@@ -57,12 +57,13 @@
                                 }
                                 $_SESSION['code']=$string;
 
-                                $headers .= "CC: webmaster@serviel.com\r\n";
+                                $headers = "CC: webmaster@serviel.com\r\n";
                                 $headers .= "MIME-Version: 1.0\r\n";
                                 $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
                                 $message = ' 
                                     <html> 
                                     <head> 
+                                        <link rel="stylesheet" href="css/index.css"/>
                                         <title>Bienvenue sur votre Cloud</title> 
                                     </head> 
                                     <body> 
