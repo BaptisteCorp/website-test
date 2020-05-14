@@ -48,8 +48,8 @@
                             $result = $c->rowCount() + $d->rowCount(); //comptage de nombre d'email à ce nom
                             if($result == 0){ //s'il n'y en a aucun
                                 $_SESSION['data']=array(0 => $semail, $password, $pseudo);
-                                $length=10;
-                                $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; // Création d'un de mot de passe de 10 caractères aléatoires avant chiffres majuscules et minuscules
+                                $length=6;
+                                $chars = '0123456789'; // Création d'un coce de 6 caractères aléatoires
                                 $string = '';
 
                                 for($i=0; $i<$length; $i++){
@@ -62,7 +62,7 @@
                                     echo $errorMessage;
                                 }
                                 else{
-                                echo "Un mail vient de vous être envoyé, pensez à regarder vos spam ;)";
+                                echo "Un mail vient de vous être envoyé à : ";
                                 echo $semail;
                                 }
                                 ?>
