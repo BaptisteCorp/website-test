@@ -8,6 +8,7 @@
 <html lang="fr">
     <head>
         <title>Homepage</title>
+        <link rel="icon" type="image/png" href="/images/cloud.png" />
         <meta charset="utf-8"/>
         <!--<link rel="stylesheet" href="css/main.css"/>-->
         <link rel="stylesheet" href="css/index.css"/>

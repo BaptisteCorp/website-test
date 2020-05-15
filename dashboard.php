@@ -16,6 +16,7 @@
 <html>
     <head>
         <title>Homepage</title>
+        <link rel="icon" type="image/png" href="/images/cloud.png" />
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="css/main.css"/>
         <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet"> <!-- permet d'utiliser des polices d'écritures différentes -->
